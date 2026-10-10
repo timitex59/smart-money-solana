@@ -68,6 +68,7 @@ BOT_MAX_TX_PER_RUN = 60           # un portefeuille qui fait plus de 60 transact
 BOT_MAX_BUYS_PER_HOUR = 8         # plus de 8 jetons différents achetés en une heure : robot de trading, écarté
 ALERT_MIN_MCAP, ALERT_MIN_LIQ = 50_000, 10_000  # sous ces montants : micro-jeton manipulable, pas d'alerte
 ALERT_MAX_PER_RUN = 3
+BATCH_FROM = 10                   # à partir de 10 nouvelles transactions : lecture groupée (moins de crédits Helius)
 
 
 def now_ts() -> int:
@@ -370,12 +371,21 @@ def cmd_monitor(args) -> None:
         if len(sigs) > BOT_MAX_TX_PER_RUN:
             wallets[w]["bot"] = True
             continue
-        for s in sigs:
-            if s.get("err") or (s.get("blockTime") or 0) < t - 3600:
-                continue
-            tx = h.tx(s["signature"])
-            for owner, mint in buys_in_tx(tx or {}, only_owner=w):
-                state["buys"].append({"wallet": w, "mint": mint, "ts": s.get("blockTime") or t})
+        todo = [s for s in sigs if not s.get("err") and (s.get("blockTime") or 0) >= t - 3600]
+        if len(todo) >= BATCH_FROM:
+            # Portefeuille actif : toutes ses nouvelles transactions en un appel (10 crédits les 100) au lieu d'un
+            # getTransaction (1 crédit) par transaction.
+            res = h.call("getTransactionsForAddress", [w, {
+                "sortOrder": "desc", "limit": 100, "transactionDetails": "full", "encoding": "jsonParsed",
+                "maxSupportedTransactionVersion": 1,
+                "filters": {"blockTime": {"gte": min(s.get("blockTime") or t for s in todo)}}}]) or {}
+            wanted = {s["signature"] for s in todo}
+            txs = [x for x in res.get("data") or [] if x["transaction"]["signatures"][0] in wanted]
+        else:
+            txs = [x for x in (h.tx(s["signature"]) for s in todo) if x]
+        for tx in txs:
+            for owner, mint in buys_in_tx(tx, only_owner=w):
+                state["buys"].append({"wallet": w, "mint": mint, "ts": tx.get("blockTime") or t})
                 new_buys += 1
     state["buys"] = [b for b in state["buys"] if b["ts"] >= t - 86400]
     # Robots de trading : trop d'achats de jetons différents sur la dernière heure → écartés définitivement.

@@ -2207,7 +2207,8 @@
    "profitable": false,
    "at": "2026-10-10T16:02:55+00:00",
    "partial": true
-  }
+  },
+  "bot": true
  },
  "8DGDiPHbfCHemJUMbekoL2vycrvBzS2PpHt6R4NFGYjL": {
   "hits": {
@@ -6365,7 +6366,8 @@
    "profitable": false,
    "at": "2026-10-10T16:02:55+00:00",
    "partial": true
-  }
+  },
+  "bot": true
  },
  "DduXFt34EX2QEQ3cWrpw2w2f4twgNLRB1GawUjh9uXDS": {
   "hits": {

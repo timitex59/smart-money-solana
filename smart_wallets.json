@@ -8165,7 +8165,8 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "GG2m47yrfPQ6M22bUXwr5bdQRM95x3o6VcPpt9STRjh3": {
   "hits": {
@@ -17148,7 +17149,8 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "69pDoe9j5MVh4vwLtVeEuLH29MuLD869qFDhVKaunnQz": {
   "hits": {
@@ -17572,7 +17574,8 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "4jGTGNqFFTsZh92ipJJjyAeGZWDVPqFEqSrhP98TXxxX": {
   "hits": {

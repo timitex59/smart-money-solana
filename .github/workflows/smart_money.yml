@@ -1,0 +1,71 @@
+name: Smart money Solana — alertes memecoins (aucun achat)
+
+# Application « smart money » (smart_money.py) : repère les portefeuilles entrés tôt sur plusieurs memecoins
+# Solana gagnants, surveille leurs achats et envoie une alerte Telegram quand au moins 3 d'entre eux achètent le même
+# jeton en moins d'une heure. ALERTES ET ANALYSE UNIQUEMENT : aucune clé d'échange, aucun ordre, aucun portefeuille.
+#
+# Déclenché UNIQUEMENT par workflow_dispatch, appelé par cron-job.org (comme les autres workflows du dépôt) :
+#   - monitor  : toutes les 15 min        → corps {"ref":"main","inputs":{"cmd":"monitor"}}
+#   - discover : une fois par jour (ex. 6h) → corps {"ref":"main","inputs":{"cmd":"discover"}}
+# Secrets : HELIUS_API_KEY (offre gratuite Helius, 1M crédits/mois), TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID.
+# Pause rapide : variable de dépôt SMART_MONEY_PAUSED = "true".
+# Dépôt PUBLIC : minutes GitHub Actions gratuites et illimitées (données déjà publiques sur la blockchain ;
+# les clés restent dans les secrets du dépôt, jamais dans le code).
+
+on:
+  workflow_dispatch:
+    inputs:
+      cmd:
+        description: "discover (liste des smart wallets) ou monitor (surveillance + alertes)"
+        required: true
+        default: monitor
+        type: choice
+        options: [monitor, discover]
+
+permissions:
+  contents: write # garde la liste des smart wallets, les achats récents et les alertes dans le dépôt
+
+concurrency:
+  group: smart-money
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    if: vars.SMART_MONEY_PAUSED != 'true'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Smart money (${{ inputs.cmd }})
+        working-directory: .
+        env:
+          HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          python smart_money.py ${{ inputs.cmd }}
+
+      - name: Committer l'état
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add smart_wallets.json sm_data.json 2>/dev/null || true
+          git diff --cached --quiet && exit 0
+          git commit -m "Smart money : ${{ inputs.cmd }} $(TZ=Europe/Paris date '+%Y-%m-%d %H:%M %Z')"
+          # D'autres workflows poussent aussi sur main : on se recale avant de pousser.
+          for i in 1 2 3; do git pull --rebase -q origin main && git push && exit 0; sleep 5; done
+          exit 1

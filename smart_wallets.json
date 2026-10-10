@@ -895,7 +895,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -4.709459317602506,
+   "spent_sol": 94.74040142512833,
+   "roi_pct": -4.9709091863246,
+   "tokens": 187,
+   "win_rate": 0.27807486631016043,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "2BeHJV5BhhkZe24qnSbf9eQzshNK8n7Eemo9cxM34gfE": {
   "hits": {
@@ -1001,7 +1011,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 3.2706311092160947,
+   "spent_sol": 76.25503503499996,
+   "roi_pct": 4.289069053230285,
+   "tokens": 477,
+   "win_rate": 0.36268343815513626,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "NajoJR4TibdKnVmz4rNGiNVz2jrrYc5AXm5XbiBkpXH": {
   "hits": {
@@ -1048,7 +1068,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 0.13941094499999931,
+   "spent_sol": 30.57983348000004,
+   "roi_pct": 0.45589177289398086,
+   "tokens": 266,
+   "win_rate": 0.37969924812030076,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "3JXbBVhQ4FxP25njqvmSN5LVSqxw2re1KfDg4sZTYrH3": {
   "hits": {
@@ -1353,7 +1383,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -0.8179042150194914,
+   "spent_sol": 29.117758992000002,
+   "roi_pct": -2.808953172681344,
+   "tokens": 309,
+   "win_rate": 0.37216828478964403,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "8FDPxkT7SY99znZD8fqkf7Gs4XxaiLYCKCSmu5Tfh9tN": {
   "hits": {
@@ -1533,7 +1573,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 15.48310186887985,
+   "spent_sol": 156.46968989100003,
+   "roi_pct": 9.895272291819388,
+   "tokens": 260,
+   "win_rate": 0.35,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "73Wk8iTiDU4eyKfkb5bQxPwh6EbWNHNQ5c7j9yRPCnYw": {
   "hits": {
@@ -1559,7 +1609,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -1.0400641743333985,
+   "spent_sol": 11.801962492424408,
+   "roi_pct": -8.812637516862198,
+   "tokens": 336,
+   "win_rate": 0.29464285714285715,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "GTBaQbLZU9tkUs7TfAYQ5oU6aDjRJgd8TDpxVm9S9EHq": {
   "hits": {
@@ -1657,7 +1717,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -0.066588761,
+   "spent_sol": 0.08786189999999991,
+   "roi_pct": -75.78798204910213,
+   "tokens": 46,
+   "win_rate": 0.043478260869565216,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "4Ejk42VUBnmhB2URHwDXPJnVnqgTWDesGukF8pwMu8ss": {
   "hits": {
@@ -1770,7 +1840,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -8.73246979528364,
+   "spent_sol": 172.97644971999932,
+   "roi_pct": -5.048357628694007,
+   "tokens": 293,
+   "win_rate": 0.18771331058020477,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "haqqiUUXB5gp7gDbSjpEkw3phAjQb25r86uXJsZQgWq": {
   "hits": {
@@ -1833,7 +1913,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -5.432699852217922,
+   "spent_sol": 68.19947919799984,
+   "roi_pct": -7.9658963911519916,
+   "tokens": 237,
+   "win_rate": 0.16455696202531644,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "Du82T7Br9jcnuTmJkkXuXCQCynWT7tS3vVWyMtURTQEL": {
   "hits": {
@@ -2103,7 +2193,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 2.1666172553905145,
+   "spent_sol": 290.58402490751655,
+   "roi_pct": 0.7456078344568592,
+   "tokens": 96,
+   "win_rate": 0.21875,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "8DGDiPHbfCHemJUMbekoL2vycrvBzS2PpHt6R4NFGYjL": {
   "hits": {
@@ -6224,7 +6324,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 0.7053155883305301,
+   "spent_sol": 124.63444559700007,
+   "roi_pct": 0.5659074302870787,
+   "tokens": 267,
+   "win_rate": 0.2209737827715356,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "5gfshs1yDAHfJYKaHinExHY12yNub6KUs5YvLMs6chL6": {
   "hits": {
@@ -6240,7 +6350,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 22.527971432440935,
+   "spent_sol": 599.5223255750004,
+   "roi_pct": 3.757653463669499,
+   "tokens": 162,
+   "win_rate": 0.345679012345679,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "DduXFt34EX2QEQ3cWrpw2w2f4twgNLRB1GawUjh9uXDS": {
   "hits": {
@@ -6518,7 +6638,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -0.8617851079719352,
+   "spent_sol": 4.7595617509999935,
+   "roi_pct": -18.1063961989961,
+   "tokens": 448,
+   "win_rate": 0.0625,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "3ZC2wfJukHX2KqcrDPHuHeBCEAtEgHSSJKKgYkeTUaQn": {
   "hits": {
@@ -6758,7 +6888,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -0.7550304890000067,
+   "spent_sol": 245.96455176099977,
+   "roi_pct": -0.30696719653068505,
+   "tokens": 166,
+   "win_rate": 0.4397590361445783,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": false
+  }
  },
  "4Q4RKLskrUYS4LJKDBrvxsTA6F8teC9MQYLp1agLfEKR": {
   "hits": {
@@ -6794,7 +6934,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 222.44157247398007,
+   "spent_sol": 383.1726674050201,
+   "roi_pct": 58.052567783718125,
+   "tokens": 147,
+   "win_rate": 0.4217687074829932,
+   "profitable": true,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": false
+  }
  },
  "C3A52EvMkxYKXuTREHufNNZ7r6WRKVRzzhssYpoV1Unr": {
   "hits": {
@@ -6810,7 +6960,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 9.652781520085007,
+   "spent_sol": 347.91901221899985,
+   "roi_pct": 2.7744334690192214,
+   "tokens": 218,
+   "win_rate": 0.4036697247706422,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "4462qh9k9zGZxcsU7jHa6zH5iXN9BjPwMfpMRuaersyv": {
   "hits": {
@@ -6856,7 +7016,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 98.76942276766978,
+   "spent_sol": 452.7695347099999,
+   "roi_pct": 21.814502786927097,
+   "tokens": 79,
+   "win_rate": 0.22784810126582278,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": false
+  }
  },
  "2uV1s6VUbb6itZnKSjo6nG4ac9KNAEGRaKfcPMpHd1an": {
   "hits": {
@@ -6989,7 +7159,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 0.5739723242712476,
+   "spent_sol": 122.92345075000009,
+   "roi_pct": 0.46693476368360676,
+   "tokens": 157,
+   "win_rate": 0.4585987261146497,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "8NdJBkpcZ7bWortxFEwjifMHSSWZTzxGjHxLcH1RD38y": {
   "hits": {
@@ -7448,7 +7628,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -20.264726180000007,
+   "spent_sol": 125.24763112,
+   "roi_pct": -16.17972811045371,
+   "tokens": 98,
+   "win_rate": 0.22448979591836735,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": false
+  }
  },
  "4pLRtVwymQMY1NK14CcGLsKUtb8j9NhjPAZMpA6xH1Gz": {
   "hits": {
@@ -7464,7 +7654,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -7.044538084572545,
+   "spent_sol": 198.8806880928333,
+   "roi_pct": -3.54209257425955,
+   "tokens": 132,
+   "win_rate": 0.22727272727272727,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "HxLhDPw1NndP4AGJvRCCusDhb3gqn3w7wwDbJBgHUZde": {
   "hits": {
@@ -7550,7 +7750,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -1.0001420774337908,
+   "spent_sol": 12.672282882411748,
+   "roi_pct": -7.892359148815395,
+   "tokens": 87,
+   "win_rate": 0.1839080459770115,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "DtaBsMtMGmjXpdpTqDPkkofxpLNjXMgDqBXsz28ZUomw": {
   "hits": {
@@ -7648,7 +7858,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -8.678733398663368,
+   "spent_sol": 264.3932925653136,
+   "roi_pct": -3.2825089148278765,
+   "tokens": 67,
+   "win_rate": 0.3283582089552239,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "D8pBNrTqzgr6FNWg5umqXcG32UkiBYr5vR71GTRMfujZ": {
   "hits": {
@@ -7684,7 +7904,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 17.89781878960501,
+   "spent_sol": 366.5378053162631,
+   "roi_pct": 4.882939366694269,
+   "tokens": 123,
+   "win_rate": 0.4878048780487805,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "ARcvd2GiVSmz7oR2ozpe3KzVBadsVrEav5DdnVJ8sjhK": {
   "hits": {
@@ -7985,7 +8215,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -0.23387240199999995,
+   "spent_sol": 5.9503712990000155,
+   "roi_pct": -3.930383336571,
+   "tokens": 488,
+   "win_rate": 0.42008196721311475,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "BGa1z2dv3BhNh8DMzMyDovrmKRaTfSzqJeZp8snp1asz": {
   "hits": {
@@ -8565,7 +8805,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 0.15062912202471912,
+   "spent_sol": 16.11963255899997,
+   "roi_pct": 0.9344451337423278,
+   "tokens": 150,
+   "win_rate": 0.24666666666666667,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": false
+  }
  },
  "9xTWWQwmprjuvmmwES1X8urw8vLK6L765CA18QXuZfsP": {
   "hits": {
@@ -8786,7 +9036,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 0.040793864000005196,
+   "spent_sol": 96.2189428000004,
+   "roi_pct": 0.042396915631050795,
+   "tokens": 317,
+   "win_rate": 0.4889589905362776,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "DyQV8bLBsaAK3QvL2VSfsbT989gMtPLS7P7uqvMiqMFR": {
   "hits": {
@@ -9221,7 +9481,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -39.720300004286315,
+   "spent_sol": 647.6297980066324,
+   "roi_pct": -6.133179808363224,
+   "tokens": 91,
+   "win_rate": 0.4945054945054945,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "ArqcZqiMjnyFtVcHGXqiScQbkYKfUUahKvZbHmeqSNUY": {
   "hits": {
@@ -9427,7 +9697,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -0.5741971930309686,
+   "spent_sol": 6.496616245643347,
+   "roi_pct": -8.838404044813748,
+   "tokens": 84,
+   "win_rate": 0.2261904761904762,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": false
+  }
  },
  "C9R7wAs29hBzH7Gte6KuMhFRPk94Sg97Ee9DEZVAZbzT": {
   "hits": {
@@ -9572,7 +9852,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -4.123182747349211,
+   "spent_sol": 37.68025163900009,
+   "roi_pct": -10.942556294081657,
+   "tokens": 332,
+   "win_rate": 0.1746987951807229,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "HZtrrs1X6HkVPGdw78vT1uABk8ugciDK2jk7SpkRRCFu": {
   "hits": {
@@ -9678,7 +9968,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -0.5336594417807683,
+   "spent_sol": 6.503030834999999,
+   "roi_pct": -8.20631879689939,
+   "tokens": 349,
+   "win_rate": 0.23209169054441262,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "EAGxhdxdUQbFuFyDRqSB1CebzK14bqarRFUAHNpdFT58": {
   "hits": {
@@ -9824,7 +10124,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -1.8223456920000005,
+   "spent_sol": 13.464449936000003,
+   "roi_pct": -13.534497886375446,
+   "tokens": 48,
+   "win_rate": 0.16666666666666666,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": false
+  }
  },
  "DyJ5ZfmXRYkumf3B5EgEyP1Z2LfJMGmojQzxVhmJ2XfH": {
   "hits": {
@@ -11595,7 +11905,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -12.510976361526097,
+   "spent_sol": 201.1305801284232,
+   "roi_pct": -6.22032529988118,
+   "tokens": 179,
+   "win_rate": 0.25139664804469275,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "GdNwJkpwG3ARojJAfBXPwChhK3rX4JQKF9eeqjY37MYn": {
   "hits": {
@@ -11681,7 +12001,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -0.6917659029999934,
+   "spent_sol": 18.431346681000015,
+   "roi_pct": -3.7532032518985794,
+   "tokens": 224,
+   "win_rate": 0.18303571428571427,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "88xLAksLXeod1zp45eZ8QNzuj9XfwCd2jJJfox85qLNL": {
   "hits": {
@@ -12847,7 +13177,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 17.16049186399998,
+   "spent_sol": 362.97116941400003,
+   "roi_pct": 4.727783722245706,
+   "tokens": 220,
+   "win_rate": 0.5,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "4ju164SM81UqqQ6A7mxBAkTdRstGNpS1sCxdRmxrjv7e": {
   "hits": {
@@ -12893,7 +13233,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -0.9091335083138465,
+   "spent_sol": 17.138177119999998,
+   "roi_pct": -5.304726996040327,
+   "tokens": 4,
+   "win_rate": 0.5,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "CVKf4a1SSuPuLxRpaeGDCCdEBbjE2qwksqz2tyWGiVVd": {
   "hits": {
@@ -14386,7 +14736,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -0.8503200888064916,
+   "spent_sol": 11.518402480000004,
+   "roi_pct": -7.38227449755247,
+   "tokens": 57,
+   "win_rate": 0.2982456140350877,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": false
+  }
  },
  "GdVwbiEArdnhWNfwnEzVkX8GZqMn5za2AGGhecnCHeia": {
   "hits": {
@@ -14552,7 +14912,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 1.02573773240367,
+   "spent_sol": 25.504446491999992,
+   "roi_pct": 4.021799621197089,
+   "tokens": 174,
+   "win_rate": 0.26436781609195403,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "Djp6NDmVEah6TydU8Pk4XWBfpHn8KXoFxNSFfHvZcWo1": {
   "hits": {
@@ -15757,7 +16127,17 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -0.3361487379999992,
+   "spent_sol": 14.994550587,
+   "roi_pct": -2.2418060217919034,
+   "tokens": 150,
+   "win_rate": 0.18666666666666668,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "5tKKwBEdw1NNpeQ2djXaBHEw7xa5wp6h4YFjHNxxF3Bg": {
   "hits": {
@@ -16863,7 +17243,17 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 220.93755320899996,
+   "spent_sol": 380.259612289,
+   "roi_pct": 58.101766811113734,
+   "tokens": 149,
+   "win_rate": 0.436241610738255,
+   "profitable": true,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "FYxZPaTsx3LyA6QsfaqhPZJAqvtkoHNjZGj4geKerXc9": {
   "hits": {
@@ -16879,7 +17269,17 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 187.784142227,
+   "spent_sol": 392.87087586700017,
+   "roi_pct": 47.797928979233156,
+   "tokens": 157,
+   "win_rate": 0.4585987261146497,
+   "profitable": true,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "H2vrtjd96rTtaEuF9c1gnDDJnucSmcB2XNNyhSFoLXwU": {
   "hits": {
@@ -16895,7 +17295,17 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 1.1629169329999993,
+   "spent_sol": 28.393394076999968,
+   "roi_pct": 4.095730612008864,
+   "tokens": 283,
+   "win_rate": 0.1519434628975265,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "AZHf58XarzNckufc3N1GEDywBhM8dgM6iMFaUDKSavpZ": {
   "hits": {
@@ -16938,7 +17348,17 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 32.54128937503857,
+   "spent_sol": 581.1821384810003,
+   "roi_pct": 5.5991551048161465,
+   "tokens": 196,
+   "win_rate": 0.3622448979591837,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "5n6Q4bYDFe3CZ2aj4wj8jU1j6yx57DeHxY1xVs4cQXQD": {
   "hits": {
@@ -16964,7 +17384,17 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 144.6215314512408,
+   "spent_sol": 282.7415554250001,
+   "roi_pct": 51.14972619919785,
+   "tokens": 152,
+   "win_rate": 0.34868421052631576,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "8wYV1CxGTauYamagHuEKK7XVjCUuBjE42xQJC91m6z1b": {
   "hits": {
@@ -16980,7 +17410,17 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 34.655976921000004,
+   "spent_sol": 156.54204381699995,
+   "roi_pct": 22.138446692003953,
+   "tokens": 155,
+   "win_rate": 0.3419354838709677,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "EGpYE7LJ31X41W5Yi6ocDiVLYYu4qbam8pbNWpJo6cLL": {
   "hits": {
@@ -16996,7 +17436,17 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 56.05210230700001,
+   "spent_sol": 129.26531553200005,
+   "roi_pct": 43.36205893770796,
+   "tokens": 135,
+   "win_rate": 0.3111111111111111,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "31pktyQEJuqy8uLAPssUVzwdGu9xukpndspBNSq7R1vg": {
   "hits": {
@@ -17012,7 +17462,17 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 48.98587130799999,
+   "spent_sol": 164.20241031799998,
+   "roi_pct": 29.83261403601341,
+   "tokens": 154,
+   "win_rate": 0.35064935064935066,
+   "profitable": true,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "66B95ED19CLsJtsVYPkTBQT3EZPPpEawCimCPruVucSX": {
   "hits": {
@@ -17028,7 +17488,17 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 89.55465263997239,
+   "spent_sol": 264.188752575,
+   "roi_pct": 33.897980806184734,
+   "tokens": 149,
+   "win_rate": 0.348993288590604,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "L3Nd9vH5sikJEjzLYwisR7aMnLNKvboaEhq8KdHBHpt": {
   "hits": {
@@ -17044,7 +17514,17 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 32.264669465,
+   "spent_sol": 129.0887885319999,
+   "roi_pct": 24.99416861209592,
+   "tokens": 139,
+   "win_rate": 0.3381294964028777,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "7k4HGQnE7WmHtbSMBg7DgJqtKKv7Dytrtau9yc6PQ943": {
   "hits": {
@@ -17070,7 +17550,17 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 102.21349839461647,
+   "spent_sol": 387.6215495019999,
+   "roi_pct": 26.369405551867832,
+   "tokens": 99,
+   "win_rate": 0.37373737373737376,
+   "profitable": true,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "4HSvNQnbMNdLLsbARbRZMvZrwF6o6XP5C76TGqCPVrEi": {
   "hits": {
@@ -17086,7 +17576,17 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 73.33752215866427,
+   "spent_sol": 468.0429274100001,
+   "roi_pct": 15.66897347738821,
+   "tokens": 155,
+   "win_rate": 0.3419354838709677,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "HwLUyAPykbPgkotArMazDsNUn7uMyCSBMjm3drDHSBfw": {
   "hits": {
@@ -17107,7 +17607,17 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 1.7100046790000019,
+   "spent_sol": 89.36435327999978,
+   "roi_pct": 1.9135198949430658,
+   "tokens": 330,
+   "win_rate": 0.45454545454545453,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "J1Soyxc5RdZS3N1tVuKDZTwpjybzM5Ucr2LbTpxCmTJx": {
   "hits": {
@@ -17123,7 +17633,17 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -11.34343441128226,
+   "spent_sol": 128.41661667600025,
+   "roi_pct": -8.833307328055648,
+   "tokens": 283,
+   "win_rate": 0.2508833922261484,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "7uRuBJqrETh4uHqVFLhxhNv4xzPwkjWCZ86ZxDt7SvmF": {
   "hits": {
@@ -17178,7 +17698,17 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -4.090975352802445,
+   "spent_sol": 71.58375970365249,
+   "roi_pct": -5.714948990858478,
+   "tokens": 243,
+   "win_rate": 0.3168724279835391,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "CqXsTn8eyoLB4Pc6p5ZNZNHu1NF42hssHMprF3NmtgtX": {
   "hits": {
@@ -17204,7 +17734,17 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 16.367100507947608,
+   "spent_sol": 195.59786755699997,
+   "roi_pct": 8.367729521988784,
+   "tokens": 227,
+   "win_rate": 0.31277533039647576,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "bKkRvneG9GW2tj2JpfD32rGUby6xXXwyMQuufbvAm62": {
   "hits": {
@@ -17250,7 +17790,17 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -0.4412870627395345,
+   "spent_sol": 26.75235602300001,
+   "roi_pct": -1.6495259795441692,
+   "tokens": 112,
+   "win_rate": 0.4732142857142857,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "AmwJToZR4YkawNquDbiUHbZnC2Myq1CLRRryUQ9FBf89": {
   "hits": {
@@ -18223,7 +18773,17 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -6.353832517999998,
+   "spent_sol": 48.77918675599996,
+   "roi_pct": -13.025704076992348,
+   "tokens": 421,
+   "win_rate": 0.2327790973871734,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "6BV7sa6YW831HeKsbqNEpkUkss6A97chNaDNd6GZ4hu9": {
   "hits": {
@@ -19289,7 +19849,17 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 63.82609716990898,
+   "spent_sol": 379.42641218899985,
+   "roi_pct": 16.82173278388325,
+   "tokens": 179,
+   "win_rate": 0.3687150837988827,
+   "profitable": true,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "7M3Yj9pqp2bPtqbjVdKnERRfEv1svfaLkPXLkuJwRUMg": {
   "hits": {
@@ -19305,7 +19875,17 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": 76.46931528534569,
+   "spent_sol": 316.793112062,
+   "roi_pct": 24.13856626730564,
+   "tokens": 148,
+   "win_rate": 0.32432432432432434,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": true
+  }
  },
  "5XXdeatQXQJzkvZ5kyNKDoEp7QMVX98ZAFoHtrijHdXy": {
   "hits": {
@@ -19381,7 +19961,17 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "pnl": {
+   "pnl_sol": -0.18025429800000026,
+   "spent_sol": 22.341434920000005,
+   "roi_pct": -0.8068161183265673,
+   "tokens": 47,
+   "win_rate": 0.3191489361702128,
+   "profitable": false,
+   "at": "2026-10-10T16:02:55+00:00",
+   "partial": false
+  }
  },
  "hh1esnZWcmtGLwAN6PvPdttfRNXg2PhA9mQJH7hkbHq": {
   "hits": {

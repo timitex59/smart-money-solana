@@ -208,10 +208,13 @@ def dexscreener(mint: str) -> dict:
 
 
 def rugcheck(mint: str) -> dict:
+    """Résumé RugCheck : score (0-100), risques (nom + niveau « warn » ou « danger »), liquidité verrouillée.
+    {} si RugCheck ne répond pas."""
     try:
         j = requests.get(f"https://api.rugcheck.xyz/v1/tokens/{mint}/report/summary", headers=UA, timeout=20).json()
-        return {"score": j.get("score_normalised"), "risks": [r.get("name") for r in j.get("risks") or []][:4],
-                "lp_locked": j.get("lpLockedPct")}
+        risks = [{"name": r.get("name"), "level": r.get("level")} for r in j.get("risks") or []]
+        return {"score": j.get("score_normalised"), "risks": [r["name"] for r in risks][:4],
+                "dangers": [r["name"] for r in risks if r["level"] == "danger"], "lp_locked": j.get("lpLockedPct")}
     except (requests.RequestException, ValueError):
         return {}
 
@@ -400,6 +403,14 @@ def cmd_monitor(args) -> None:
         if float(info.get("mcap") or 0) < ALERT_MIN_MCAP or float(info.get("liq") or 0) < ALERT_MIN_LIQ:
             continue  # micro-jeton (souvent encore en phase de lancement pump.fun, sans liquidité réelle)
         rc = rugcheck(mint)
+        if rc.get("dangers"):
+            # Filtre RugCheck : un risque de niveau « danger » (créateur ayant déjà fait des arnaques, création de jetons ou
+            # gel des portefeuilles encore possibles, détenteur quasi unique…) = pas d'alerte. Noté pour l'onglet du
+            # dashboard, pour vérifier plus tard que ce filtre écarte bien des jetons qui chutent.
+            state.setdefault("blocked", []).append({"mint": mint, "ts": t, "symbol": info.get("symbol"), "dangers": rc["dangers"],
+                                                    "actors": n_actors, "mcap": info.get("mcap"), "price": info.get("price")})
+            state["blocked"] = state["blocked"][-200:]
+            continue
         sent += 1
         alert = {"mint": mint, "ts": t, "wallets": sorted(ws), "actors": n_actors, "symbol": info.get("symbol"), "name": info.get("name"),
                  "price": info.get("price"), "mcap": info.get("mcap"), "liq": info.get("liq"), "url": info.get("url"),
@@ -410,7 +421,8 @@ def cmd_monitor(args) -> None:
                  "",
                  f"Capitalisation : {fmt_usd(info.get('mcap'))} · liquidité : {fmt_usd(info.get('liq'))}"
                  + (f" · âge : {age_h:.0f} h" if age_h is not None else ""),
-                 f"RugCheck : risque {rc.get('score', '?')}/100" + (f" ({', '.join(rc['risks'])})" if rc.get("risks") else "")
+                 (f"RugCheck : risque {rc.get('score', '?')}/100 · aucun risque grave" + (f" (avertissements : {', '.join(rc['risks'])})" if rc.get("risks") else "")
+                  if rc else "RugCheck : indisponible au moment de l'alerte ⚠️ — vérifiez sur rugcheck.xyz")
                  + (f" · LP verrouillée {rc['lp_locked']:.0f} %" if rc.get("lp_locked") is not None else ""),
                  "Acheteurs : " + ", ".join(f"{x[:4]}…{x[-4:]} ({len(wallets.get(x, {}).get('hits', {}))} gagnants)" for x in sorted(ws)),
                  info.get("url") or f"https://dexscreener.com/solana/{mint}",

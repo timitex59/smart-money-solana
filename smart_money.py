@@ -106,13 +106,19 @@ class Helius:
         for attempt in range(5):
             try:
                 r = requests.post(self.url, json={"jsonrpc": "2.0", "id": 1, "method": method, "params": params}, timeout=30)
-                self.credits += 1
                 if r.status_code == 429:
                     time.sleep(1.5 * (attempt + 1))
                     continue
                 j = r.json()
                 if "error" in j:
-                    raise RuntimeError(f"{method}: {j['error']}")
+                    raise RuntimeError(f"{method}: {j['error']}")  # réponse en échec : non facturée par Helius
+                # Barème Helius : 1 crédit par appel standard ; getTransactionsForAddress = 10 crédits par tranche de 100
+                # transactions complètes renvoyées (10 au minimum).
+                if method == "getTransactionsForAddress":
+                    n = len((j.get("result") or {}).get("data") or [])
+                    self.credits += 10 * max(1, -(-n // 100))
+                else:
+                    self.credits += 1
                 time.sleep(0.11)  # offre gratuite : 10 requêtes/s
                 return j["result"]
             except (requests.RequestException, ValueError):

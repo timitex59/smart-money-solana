@@ -7,7 +7,8 @@ name: Smart money Solana — alertes memecoins (aucun achat)
 # Déclenché UNIQUEMENT par workflow_dispatch, appelé par cron-job.org (comme les autres workflows du dépôt) :
 #   - monitor  : toutes les 15 min        → corps {"ref":"main","inputs":{"cmd":"monitor"}}
 #   - discover : une fois par jour (ex. 6h) → corps {"ref":"main","inputs":{"cmd":"discover"}}
-# Secrets : HELIUS_API_KEY (offre gratuite Helius, 1M crédits/mois), TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID.
+# Secrets : HELIUS_API_KEY (offre gratuite Helius, 1M crédits/mois), GROK_API_KEY (xAI, analyse X des alertes, payant
+# à l'usage), TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID.
 # Pause rapide : variable de dépôt SMART_MONEY_PAUSED = "true".
 # Dépôt PUBLIC : minutes GitHub Actions gratuites et illimitées (données déjà publiques sur la blockchain ;
 # les clés restent dans les secrets du dépôt, jamais dans le code).
@@ -54,6 +55,7 @@ jobs:
         working-directory: .
         env:
           HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
+          GROK_API_KEY: ${{ secrets.GROK_API_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |

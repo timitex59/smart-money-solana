@@ -78,6 +78,9 @@ PROFIT_MIN_TOKENS, PROFIT_MIN_WINRATE = 5, 0.35  # « rentable » : >= 5 jetons 
 PROFIT_MIN_SOL, PROFIT_MIN_ROI = 1.0, 10.0       # …et au moins +1 SOL et +10 % sur les sommes engagées (pas un simple 0 %)
 ALERT_MIN_PROFITABLE = 2          # une alerte exige au moins 2 acheteurs réellement rentables
 TOP_N = 5
+# Analyse X (Twitter) de chaque alerte par Grok (xAI, payant à l'usage : ~0,14 $ par analyse) — clé GROK_API_KEY
+GROK_MODEL = "grok-4.20-0309-non-reasoning"
+GROK_MAX_PER_DAY = 10             # garde-fou de dépense : 10 analyses/jour au plus (~1,40 $)
 BATCH_FROM = 10                   # à partir de 10 nouvelles transactions : lecture groupée (moins de crédits Helius)
 
 
@@ -454,6 +457,71 @@ def send_top(wallets: dict, state: dict, t: int) -> None:
 
 
 # --------------------------------------------------------------------------
+# Analyse X (Twitter) par Grok
+# --------------------------------------------------------------------------
+GROK_VERDICTS = {"green": "🟢 rien d'alarmant", "orange": "🟠 prudence", "red": "🔴 signaux d'arnaque"}
+
+
+def grok_x_analysis(state: dict, t: int, mint: str, info: dict) -> dict:
+    """Ce que disent les posts récents sur X à propos du jeton : buzz, comptes, signaux d'arnaque, verdict
+    green/orange/red. {} si pas de clé, limite du jour atteinte ou erreur (l'alerte part alors sans cette analyse)."""
+    key = os.environ.get("GROK_API_KEY", "").strip()
+    day = iso(t)[:10]
+    used = state.setdefault("grok", {})
+    if not key:
+        return {"error": "clé GROK_API_KEY absente"}
+    if used.get(day, {}).get("n", 0) >= GROK_MAX_PER_DAY:
+        return {"error": f"limite de {GROK_MAX_PER_DAY} analyses par jour atteinte"}
+    sym = info.get("symbol") or "?"
+    prompt = (
+        f"Analyse les posts récents sur X (Twitter) à propos du memecoin Solana « {sym} » ({info.get('name') or ''}), "
+        f"adresse du contrat {mint}. Cherche par le symbole ${sym} ET par l'adresse du contrat (plusieurs jetons peuvent "
+        "porter le même nom : ne retiens que ce qui concerne CE contrat). Réponds UNIQUEMENT par un objet JSON, sans texte "
+        'autour, de la forme : {"verdict": "green|orange|red", "buzz": "...", "accounts": "...", "scam_signals": "...", '
+        '"links": ["url d\'un post", "..."]}. Règles du verdict : "red" si des comptes crédibles signalent une arnaque, un '
+        "rug, un « bundle » (offre concentrée chez des portefeuilles liés au créateur), un créateur qui vend ou des "
+        'portefeuilles d\'initiés ; "orange" si les informations sont rares, contradictoires ou si le buzz paraît '
+        'artificiel ; "green" si le buzz semble organique sans signal d\'arnaque. Champs en français, 1 à 2 phrases '
+        "chacun, au plus 2 liens."
+    )
+    try:
+        r = requests.post("https://api.x.ai/v1/responses", headers={"Authorization": f"Bearer {key}"}, timeout=150,
+                          json={"model": GROK_MODEL, "input": [{"role": "user", "content": prompt}], "tools": [{"type": "x_search"}]})
+        j = r.json()
+        if not r.ok:
+            return {"error": f"xAI {r.status_code} : {str(j)[:120]}"}
+    except (requests.RequestException, ValueError) as exc:
+        return {"error": f"xAI injoignable : {exc}"}
+    cost = ((j.get("usage") or {}).get("cost_in_usd_ticks") or 0) / 1e10
+    rec = used.setdefault(day, {"n": 0, "usd": 0.0})
+    rec["n"] += 1
+    rec["usd"] += cost
+    for d in sorted(used)[:-40]:
+        del used[d]
+    text = "".join(c.get("text", "") for o in j.get("output", []) if o.get("type") == "message"
+                   for c in o.get("content", []) if c.get("type") == "output_text")
+    try:
+        a = json.loads(text[text.index("{"):text.rindex("}") + 1])
+    except ValueError:
+        return {"error": "réponse de Grok illisible", "cost_usd": cost}
+    a["verdict"] = a.get("verdict") if a.get("verdict") in GROK_VERDICTS else "orange"
+    a["links"] = [u for u in (a.get("links") or []) if isinstance(u, str) and u.startswith("http")][:2]
+    a["cost_usd"] = cost
+    return a
+
+
+def grok_lines(a: dict) -> list:
+    if not a or a.get("error"):
+        return [f"X (Grok) : analyse indisponible{' — ' + a['error'] if a and a.get('error') else ''}"]
+    out = [f"X (Grok) : {GROK_VERDICTS[a['verdict']]}"]
+    for lab, k in (("Buzz", "buzz"), ("Comptes", "accounts"), ("Signaux", "scam_signals")):
+        if a.get(k):
+            out.append(f"• {lab} : {a[k]}")
+    out += [f"• {u}" for u in a["links"]]
+    return out
+
+
+# --------------------------------------------------------------------------
 # 1. Découverte des smart wallets
 # --------------------------------------------------------------------------
 def early_buyers(h: Helius, mint: str) -> "tuple[list, int | None]":
@@ -676,10 +744,17 @@ def cmd_monitor(args) -> None:
                                                     "actors": n_actors, "mcap": info.get("mcap"), "price": info.get("price")})
             state["blocked"] = state["blocked"][-200:]
             continue
+        xa = grok_x_analysis(state, t, mint, info)
+        if xa.get("verdict") == "red":
+            # Filtre X : la communauté signale une arnaque (bundle, rug, initiés…) — ce que RugCheck ne voit pas toujours.
+            state.setdefault("blocked", []).append({"mint": mint, "ts": t, "symbol": info.get("symbol"), "dangers": ["X : " + (xa.get("scam_signals") or "signaux d'arnaque")],
+                                                    "actors": n_actors, "mcap": info.get("mcap"), "price": info.get("price")})
+            state["blocked"] = state["blocked"][-200:]
+            continue
         sent += 1
         alert = {"mint": mint, "ts": t, "wallets": sorted(ws), "actors": n_actors, "profitable": len(profitable), "symbol": info.get("symbol"), "name": info.get("name"),
                  "price": info.get("price"), "mcap": info.get("mcap"), "liq": info.get("liq"), "url": info.get("url"),
-                 "rug": rc, "perf": {}}
+                 "rug": rc, "x": {k: xa.get(k) for k in ("verdict", "buzz", "accounts", "scam_signals", "links", "error")}, "perf": {}}
         state["alerts"].append(alert)
         age_h = (t - info["created"]) / 3600 if info.get("created") else None
         lines = [f"🧠 SMART MONEY — {n_actors} acteurs dont {len(profitable)} rentables achètent {info.get('symbol') or mint[:6]}",
@@ -689,6 +764,8 @@ def cmd_monitor(args) -> None:
                  (f"RugCheck : risque {rc.get('score', '?')}/100 · aucun risque grave" + (f" (avertissements : {', '.join(rc['risks'])})" if rc.get("risks") else "")
                   if rc else "RugCheck : indisponible au moment de l'alerte ⚠️ — vérifiez sur rugcheck.xyz")
                  + (f" · LP verrouillée {rc['lp_locked']:.0f} %" if rc.get("lp_locked") is not None else ""),
+                 "",
+                 *grok_lines(xa),
                  "",
                  "Acheteurs (rentabilité réelle) :",
                  *("• " + wallet_line(x, wallets.get(x, {}).get("pnl"), rank)

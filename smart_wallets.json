@@ -6901,7 +6901,8 @@
    "profitable": false,
    "at": "2026-10-10T16:02:55+00:00",
    "partial": false
-  }
+  },
+  "bot": true
  },
  "4Q4RKLskrUYS4LJKDBrvxsTA6F8teC9MQYLp1agLfEKR": {
   "hits": {

@@ -246,6 +246,8 @@ def early_buyers(h: Helius, mint: str) -> "tuple[list, int | None]":
     t0 = first[0]["blockTime"]
     txs, seen = [], set()
     for start, n in ((EARLY_MIN_S, 300), (300, 300), (1800, 200), (7200, 200)):
+        if t0 + start >= now_ts() - 60:
+            break  # jeton trop récent : cette tranche n'existe pas encore (Helius renverrait une erreur)
         token, got = None, 0
         while got < n:
             opts = {"sortOrder": "asc", "limit": 100, "transactionDetails": "full", "encoding": "jsonParsed",
@@ -280,7 +282,11 @@ def cmd_discover(args) -> None:
     print(f"{len(winners)} gagnants à analyser")
     t = now_ts()
     for w in winners:
-        buyers, t0 = early_buyers(h, w["mint"])
+        try:
+            buyers, t0 = early_buyers(h, w["mint"])
+        except RuntimeError as exc:  # un jeton illisible ne doit pas arrêter toute la découverte
+            print(f"  {w['name'][:28]:28} ignoré : {str(exc)[:100]}")
+            continue
         uniq = {}
         for owner, offset in buyers:
             uniq.setdefault(owner, offset)

@@ -16,11 +16,11 @@ on:
   workflow_dispatch:
     inputs:
       cmd:
-        description: "discover (liste des smart wallets) ou monitor (surveillance + alertes)"
+        description: "monitor (surveillance + alertes), discover (smart wallets + rentabilité + TOP 5), pnl (rentabilité de tous + TOP 5)"
         required: true
         default: monitor
         type: choice
-        options: [monitor, discover]
+        options: [monitor, discover, pnl]
 
 permissions:
   contents: write # garde la liste des smart wallets, les achats récents et les alertes dans le dépôt

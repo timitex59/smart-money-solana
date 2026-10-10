@@ -69,6 +69,15 @@ BOT_MAX_BUYS_PER_HOUR = 8         # plus de 8 jetons différents achetés en une
 ALERT_MIN_MCAP, ALERT_MIN_LIQ = 50_000, 10_000  # sous ces montants : micro-jeton manipulable, pas d'alerte
 ALERT_MAX_PER_RUN = 3
 HELIUS_MONTHLY_BUDGET = 850_000    # sur 1M gratuits : au-delà de sa part du jour, la surveillance saute des passages
+# Rentabilité réelle des smart wallets (P&L en SOL sur PNL_DAYS jours : vendu + valeur de ce qui est encore détenu − dépensé)
+PNL_DAYS = 30
+PNL_MAX_PAGES = 10                # 1 000 dernières transactions au plus par portefeuille (100 crédits)
+PNL_REFRESH_DAYS = 7              # historique reconstruit chaque semaine ; entre-temps, mis à jour en continu par la surveillance
+PNL_BACKFILL_PER_RUN = 25         # portefeuilles reconstruits par passage de découverte (budget de crédits)
+PROFIT_MIN_TOKENS, PROFIT_MIN_WINRATE = 5, 0.35  # « rentable » : >= 5 jetons tradés, >= 35 % de jetons gagnants…
+PROFIT_MIN_SOL, PROFIT_MIN_ROI = 1.0, 10.0       # …et au moins +1 SOL et +10 % sur les sommes engagées (pas un simple 0 %)
+ALERT_MIN_PROFITABLE = 2          # une alerte exige au moins 2 acheteurs réellement rentables
+TOP_N = 5
 BATCH_FROM = 10                   # à partir de 10 nouvelles transactions : lecture groupée (moins de crédits Helius)
 
 
@@ -243,6 +252,208 @@ def telegram(text: str) -> None:
 
 
 # --------------------------------------------------------------------------
+# Rentabilité réelle des portefeuilles (P&L en SOL)
+# --------------------------------------------------------------------------
+WSOL = "So11111111111111111111111111111111111111112"
+
+
+def sol_usd() -> float:
+    try:
+        pairs = requests.get(f"https://api.dexscreener.com/tokens/v1/solana/{WSOL}", headers=UA, timeout=20).json()
+        usdc = [p for p in pairs if (p.get("quoteToken") or {}).get("symbol") in ("USDC", "USDT")]
+        return float(max(usdc or pairs, key=lambda p: float((p.get("liquidity") or {}).get("usd") or 0))["priceUsd"])
+    except (requests.RequestException, ValueError, KeyError, TypeError):
+        return 0.0
+
+
+def swaps_in_tx(tx: dict, owner: str, usd_per_sol: float) -> list:
+    """[(mint, variation de quantité, variation en SOL)] des échanges de `owner` dans la transaction : achat = jeton +
+    / SOL −, vente = jeton − / SOL +. SOL natif + SOL enveloppé ; USDC/USDT convertis en SOL. Les échanges jeton contre
+    jeton (sans SOL ni dollar) sont ignorés."""
+    d = owner_deltas(tx).get(owner)
+    if not d:
+        return []
+    quote = d.get("SOL", 0) + d.get(WSOL, 0)
+    for m in ("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v", "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB"):
+        if d.get(m) and usd_per_sol:
+            quote += d[m] / usd_per_sol
+    tokens = {m: q for m, q in d.items() if m != "SOL" and m not in QUOTE_MINTS and abs(q) > 0}
+    if len(tokens) != 1 or abs(quote) < 1e-6:
+        return []
+    (mint, q), = tokens.items()
+    if (q > 0) == (quote > 0):
+        return []  # jeton reçu ET SOL reçu (ou l'inverse) : pas un échange (airdrop, transfert…)
+    return [(mint, q, quote)]
+
+
+def ledger_apply(led: dict, tx: dict, owner: str, usd_per_sol: float) -> None:
+    """Enregistre les achats/ventes de `tx` dans le registre du portefeuille. Une vente d'un jeton jamais acheté dans la
+    fenêtre est ignorée (sinon un jeton acheté avant la fenêtre ferait un faux gain)."""
+    ts = tx.get("blockTime") or now_ts()
+    for mint, q, sol in swaps_in_tx(tx, owner, usd_per_sol):
+        tk = led["tokens"].get(mint)
+        if q > 0:
+            tk = led["tokens"].setdefault(mint, {"spent": 0.0, "recv": 0.0, "bought": 0.0, "sold": 0.0, "first": ts, "last": ts})
+            tk["spent"] += -sol
+            tk["bought"] += q
+        elif tk:
+            tk["recv"] += sol
+            tk["sold"] += -q
+        else:
+            continue
+        tk["last"] = max(tk["last"], ts)
+
+
+def prices_sol(mints: list, usd_per_sol: float) -> dict:
+    """{mint: prix en SOL} (DexScreener, par lots de 30, pool le plus liquide). Absent = sans valeur (jeton mort)."""
+    out = {}
+    for i in range(0, len(mints), 30):
+        try:
+            pairs = requests.get("https://api.dexscreener.com/tokens/v1/solana/" + ",".join(mints[i:i + 30]), headers=UA, timeout=20).json()
+        except (requests.RequestException, ValueError):
+            continue
+        best = {}
+        for p in pairs if isinstance(pairs, list) else []:
+            m = (p.get("baseToken") or {}).get("address")
+            liq = float((p.get("liquidity") or {}).get("usd") or 0)
+            if m and liq >= float((best.get(m, {}).get("liquidity") or {}).get("usd") or -1):
+                best[m] = p
+        for m, p in best.items():
+            if (p.get("quoteToken") or {}).get("address") == WSOL and p.get("priceNative"):
+                out[m] = float(p["priceNative"])
+            elif p.get("priceUsd") and usd_per_sol:
+                out[m] = float(p["priceUsd"]) / usd_per_sol
+        time.sleep(0.25)
+    return out
+
+
+def wallet_stats(led: dict, prices: dict) -> dict:
+    """P&L (SOL) = vendu + valeur de ce qui est encore détenu − dépensé ; taux de jetons gagnants ; nombre de jetons."""
+    pnl = spent = 0.0
+    wins = n = 0
+    for mint, tk in led["tokens"].items():
+        if tk["spent"] <= 0:
+            continue
+        held = max(tk["bought"] - tk["sold"], 0.0)
+        val = tk["recv"] + held * prices.get(mint, 0.0) - tk["spent"]
+        pnl += val
+        spent += tk["spent"]
+        n += 1
+        wins += val > 0
+    st = {"pnl_sol": pnl, "spent_sol": spent, "roi_pct": pnl / spent * 100 if spent else None, "tokens": n,
+          "win_rate": wins / n if n else None}
+    st["profitable"] = (n >= PROFIT_MIN_TOKENS and pnl >= PROFIT_MIN_SOL and (st["roi_pct"] or 0) >= PROFIT_MIN_ROI
+                        and (st["win_rate"] or 0) >= PROFIT_MIN_WINRATE)
+    return st
+
+
+def backfill(h: Helius, wallet: str, usd_per_sol: float, t: int) -> dict:
+    """Registre des PNL_DAYS derniers jours du portefeuille (getTransactionsForAddress, du plus récent au plus ancien)."""
+    led = {"tokens": {}, "synced": t, "backfilled": t}
+    token, txs = None, []
+    for _ in range(PNL_MAX_PAGES):
+        opts = {"sortOrder": "desc", "limit": 100, "transactionDetails": "full", "encoding": "jsonParsed",
+                "maxSupportedTransactionVersion": 1, "filters": {"blockTime": {"gte": t - PNL_DAYS * 86400}}}
+        if token:
+            opts["paginationToken"] = token
+        res = h.call("getTransactionsForAddress", [wallet, opts]) or {}
+        txs += res.get("data") or []
+        token = res.get("paginationToken")
+        if not res.get("data") or not token:
+            break
+    for tx in sorted(txs, key=lambda x: x.get("blockTime") or 0):  # ordre chronologique : achats avant ventes
+        if not (tx.get("meta") or {}).get("err"):
+            ledger_apply(led, tx, wallet, usd_per_sol)
+    led["partial"] = bool(token)  # historique plus long que PNL_MAX_PAGES pages : P&L calculé sur la partie récente
+    return led
+
+
+def refresh_pnl(h: Helius, wallets: dict, state: dict, t: int, max_backfill: int) -> None:
+    """Reconstruit l'historique des smart wallets qui n'en ont pas (ou trop ancien), purge ce qui sort de la fenêtre,
+    puis recalcule P&L et classement de tous les smart wallets."""
+    usd = sol_usd()
+    ledgers = state.setdefault("ledger", {})
+    smart = smart_list(wallets)
+    todo = [w for w in smart if t - ledgers.get(w, {}).get("backfilled", 0) > PNL_REFRESH_DAYS * 86400][:max_backfill]
+    done = 0
+    for w in todo:
+        if not budget_ok(state, t):
+            print("  budget Helius du jour atteint : reconstruction reportée")
+            break
+        before = h.credits
+        try:
+            ledgers[w] = backfill(h, w, usd, t)
+            done += 1
+        except RuntimeError as exc:
+            print(f"  historique de {w[:6]}… illisible : {str(exc)[:80]}")
+        add_credits(state, t, h.credits - before)
+    for w in list(ledgers):
+        if w not in wallets:
+            del ledgers[w]
+            continue
+        ledgers[w]["tokens"] = {m: tk for m, tk in ledgers[w]["tokens"].items() if tk["first"] >= t - PNL_DAYS * 86400}
+    held = sorted({m for w in smart if w in ledgers for m, tk in ledgers[w]["tokens"].items()
+                   if tk["bought"] - tk["sold"] > tk["bought"] * 0.01})
+    prices = prices_sol(held, usd)
+    for w in smart:
+        if w in ledgers:
+            wallets[w]["pnl"] = {**wallet_stats(ledgers[w], prices), "at": iso(t), "partial": ledgers[w].get("partial", False)}
+    n_ok = sum(1 for w in smart if wallets[w].get("pnl", {}).get("profitable"))
+    print(f"Rentabilité : {done} historiques reconstruits · {n_ok} portefeuilles rentables sur {len(smart)}")
+
+
+def ranking(wallets: dict) -> list:
+    """Smart wallets rentables, du plus au moins rentable (P&L en SOL sur PNL_DAYS jours)."""
+    ok = [(w, r["pnl"]) for w, r in wallets.items() if r.get("pnl", {}).get("profitable") and not r.get("bot")]
+    return sorted(ok, key=lambda x: -x[1]["pnl_sol"])
+
+
+def fmt_sol(v: float) -> str:
+    return f"{'+' if v >= 0 else '−'}{abs(v):.1f} SOL"
+
+
+def wallet_line(w: str, p, rank: dict) -> str:
+    if not p:
+        return f"{w[:4]}…{w[-4:]} (rentabilité pas encore mesurée)"
+    tag = f" · #{rank[w]}" if w in rank else ""
+    roi = f" ({p['roi_pct']:+.0f} %)" if p.get("roi_pct") is not None else ""
+    return (f"{w[:4]}…{w[-4:]} : {fmt_sol(p['pnl_sol'])} sur {PNL_DAYS} j{roi}, "
+            f"{round((p.get('win_rate') or 0) * 100)} % de jetons gagnants{tag}")
+
+
+def top_lines(wallets: dict) -> list:
+    rk = ranking(wallets)[:TOP_N]
+    if not rk:
+        return []
+    return [f"🏆 TOP {TOP_N} rentables ({PNL_DAYS} j) : " + " · ".join(f"#{i} {w[:4]}…{w[-4:]} {fmt_sol(p['pnl_sol'])}"
+                                                               for i, (w, p) in enumerate(rk, 1)), ""]
+
+
+def send_top(wallets: dict, state: dict, t: int) -> None:
+    rk = ranking(wallets)
+    if not rk:
+        telegram("🏆 TOP SMART MONEY\n\nAucun portefeuille encore mesuré comme rentable (historiques en cours de reconstruction).")
+        return
+    recent = {}
+    for b in state.get("buys", []):
+        if b["ts"] >= t - 86400:
+            recent.setdefault(b["wallet"], []).append(b["mint"])
+    names = {}
+    lines = [f"🏆 TOP {TOP_N} SMART MONEY — les plus rentables sur {PNL_DAYS} jours", ""]
+    for i, (w, p) in enumerate(rk[:TOP_N], 1):
+        lines.append(f"{i}. {w[:4]}…{w[-4:]} · {fmt_sol(p['pnl_sol'])} ({p['roi_pct']:+.0f} %) · "
+                     f"{round(p['win_rate'] * 100)} % gagnants · {p['tokens']} jetons")
+        mints = list(dict.fromkeys(recent.get(w, [])))[:4]
+        for m in mints:
+            if m not in names:
+                names[m] = dexscreener(m).get("symbol") or m[:6]
+        lines.append("   achats 24 h : " + (", ".join(names[m] for m in mints) if mints else "aucun"))
+        lines.append(f"   https://solscan.io/account/{w}")
+    lines += ["", f"{len(rk)} portefeuilles rentables sur {len(smart_list(wallets))} suivis."]
+    telegram("\n".join(lines))
+
+
+# --------------------------------------------------------------------------
 # 1. Découverte des smart wallets
 # --------------------------------------------------------------------------
 def early_buyers(h: Helius, mint: str) -> "tuple[list, int | None]":
@@ -323,6 +534,11 @@ def cmd_discover(args) -> None:
     add_credits(st, t, h.credits)
     save(STATE_PATH, st)
     smart = smart_list(wallets)
+    st = load(STATE_PATH, {"last_sig": {}, "buys": [], "alerts": []})
+    refresh_pnl(h, wallets, st, t, PNL_BACKFILL_PER_RUN)
+    save(STATE_PATH, st)
+    save(WALLETS_PATH, wallets)
+    send_top(wallets, st, t)
     print(f"Acteurs distincts parmi les smart wallets : {len(set(actor_map(wallets, smart).values()))}")
     print(f"Portefeuilles suivis : {len(wallets)} · smart wallets (>= {SMART_MIN_HITS} gagnants) : {len(smart)} · crédits Helius {h.credits}")
 
@@ -388,6 +604,8 @@ def cmd_monitor(args) -> None:
     smart = smart_list(wallets)
     t = now_ts()
     new_buys = 0
+    usd = sol_usd()
+    ledgers = state.setdefault("ledger", {})
     for w in smart:
         last = state["last_sig"].get(w)
         sigs = h.signatures(w, 100, until=last) if last else h.signatures(w, 1)
@@ -399,7 +617,7 @@ def cmd_monitor(args) -> None:
         if len(sigs) > BOT_MAX_TX_PER_RUN:
             wallets[w]["bot"] = True
             continue
-        todo = [s for s in sigs if not s.get("err") and (s.get("blockTime") or 0) >= t - 3600]
+        todo = [s for s in sigs if not s.get("err")]
         if len(todo) >= BATCH_FROM:
             # Portefeuille actif : toutes ses nouvelles transactions en un appel (10 crédits les 100) au lieu d'un
             # getTransaction (1 crédit) par transaction.
@@ -411,10 +629,15 @@ def cmd_monitor(args) -> None:
             txs = [x for x in res.get("data") or [] if x["transaction"]["signatures"][0] in wanted]
         else:
             txs = [x for x in (h.tx(s["signature"]) for s in todo) if x]
-        for tx in txs:
+        led = ledgers.get(w)
+        for tx in sorted(txs, key=lambda x: x.get("blockTime") or 0):
+            bt = tx.get("blockTime") or t
             for owner, mint in buys_in_tx(tx, only_owner=w):
-                state["buys"].append({"wallet": w, "mint": mint, "ts": tx.get("blockTime") or t})
+                state["buys"].append({"wallet": w, "mint": mint, "ts": bt})
                 new_buys += 1
+            if led and bt > led.get("synced", 0):  # suivi en temps réel de la rentabilité (achats et ventes)
+                ledger_apply(led, tx, w, usd)
+                led["synced"] = bt
     state["buys"] = [b for b in state["buys"] if b["ts"] >= t - 86400]
     # Robots de trading : trop d'achats de jetons différents sur la dernière heure → écartés définitivement.
     per_wallet: dict = {}
@@ -432,11 +655,15 @@ def cmd_monitor(args) -> None:
         by_mint.setdefault(b["mint"], set()).add(b["wallet"])
     alerted = {a["mint"]: a["ts"] for a in state["alerts"]}
     actors = actor_map(wallets, smart)
+    rank = {w: i for i, (w, _) in enumerate(ranking(wallets), 1)}
     sent = 0
     for mint, ws in sorted(by_mint.items(), key=lambda kv: -len(kv[1])):
         n_actors = len({actors.get(w, w) for w in ws})
         if n_actors < CONVERGENCE_MIN or t - alerted.get(mint, 0) < ALERT_COOLDOWN_H * 3600 or sent >= ALERT_MAX_PER_RUN:
             continue
+        profitable = [w for w in ws if wallets.get(w, {}).get("pnl", {}).get("profitable")]
+        if len({actors.get(w, w) for w in profitable}) < ALERT_MIN_PROFITABLE:
+            continue  # pas assez d'acheteurs réellement rentables (P&L mesuré sur 30 jours) : simple flair passé
         info = dexscreener(mint)
         if float(info.get("mcap") or 0) < ALERT_MIN_MCAP or float(info.get("liq") or 0) < ALERT_MIN_LIQ:
             continue  # micro-jeton (souvent encore en phase de lancement pump.fun, sans liquidité réelle)
@@ -450,21 +677,26 @@ def cmd_monitor(args) -> None:
             state["blocked"] = state["blocked"][-200:]
             continue
         sent += 1
-        alert = {"mint": mint, "ts": t, "wallets": sorted(ws), "actors": n_actors, "symbol": info.get("symbol"), "name": info.get("name"),
+        alert = {"mint": mint, "ts": t, "wallets": sorted(ws), "actors": n_actors, "profitable": len(profitable), "symbol": info.get("symbol"), "name": info.get("name"),
                  "price": info.get("price"), "mcap": info.get("mcap"), "liq": info.get("liq"), "url": info.get("url"),
                  "rug": rc, "perf": {}}
         state["alerts"].append(alert)
         age_h = (t - info["created"]) / 3600 if info.get("created") else None
-        lines = [f"🧠 SMART MONEY — {n_actors} acteurs ({len(ws)} portefeuilles) achètent {info.get('symbol') or mint[:6]}",
+        lines = [f"🧠 SMART MONEY — {n_actors} acteurs dont {len(profitable)} rentables achètent {info.get('symbol') or mint[:6]}",
                  "",
                  f"Capitalisation : {fmt_usd(info.get('mcap'))} · liquidité : {fmt_usd(info.get('liq'))}"
                  + (f" · âge : {age_h:.0f} h" if age_h is not None else ""),
                  (f"RugCheck : risque {rc.get('score', '?')}/100 · aucun risque grave" + (f" (avertissements : {', '.join(rc['risks'])})" if rc.get("risks") else "")
                   if rc else "RugCheck : indisponible au moment de l'alerte ⚠️ — vérifiez sur rugcheck.xyz")
                  + (f" · LP verrouillée {rc['lp_locked']:.0f} %" if rc.get("lp_locked") is not None else ""),
-                 "Acheteurs : " + ", ".join(f"{x[:4]}…{x[-4:]} ({len(wallets.get(x, {}).get('hits', {}))} gagnants)" for x in sorted(ws)),
+                 "",
+                 "Acheteurs (rentabilité réelle) :",
+                 *("• " + wallet_line(x, wallets.get(x, {}).get("pnl"), rank)
+                   for x in sorted(ws, key=lambda x: -(wallets.get(x, {}).get("pnl", {}).get("pnl_sol") or -1e9))),
+                 "",
                  info.get("url") or f"https://dexscreener.com/solana/{mint}",
                  "",
+                 *top_lines(wallets),
                  "⚠️ Alerte d'information uniquement — memecoin : risque de perte totale."]
         telegram("\n".join(lines))
     # Suivi des alertes : que fait le jeton ensuite ? (jugement des alertes dans le temps)
@@ -481,12 +713,25 @@ def cmd_monitor(args) -> None:
     print(f"{len(smart)} smart wallets surveillés · {new_buys} nouveaux achats · alertes au total {len(state['alerts'])} · crédits Helius {h.credits}")
 
 
+def cmd_pnl(args) -> None:
+    h = Helius(os.environ.get("HELIUS_API_KEY", "").strip())
+    wallets = load(WALLETS_PATH, {})
+    state = load(STATE_PATH, {"last_sig": {}, "buys": [], "alerts": []})
+    t = now_ts()
+    refresh_pnl(h, wallets, state, t, SMART_MAX_WALLETS)
+    save(STATE_PATH, state)
+    save(WALLETS_PATH, wallets)
+    send_top(wallets, state, t)
+    print(f"crédits Helius {h.credits}")
+
+
 def cmd_status(args) -> None:
     wallets = load(WALLETS_PATH, {})
     state = load(STATE_PATH, {"last_sig": {}, "buys": [], "alerts": []})
     smart = smart_list(wallets)
     out = {
-        "smart_wallets": [{"wallet": w, "hits": len(wallets[w]["hits"]), "tokens": [x["name"] for x in wallets[w]["hits"].values()]} for w in smart],
+        "smart_wallets": [{"wallet": w, "hits": len(wallets[w]["hits"]), "tokens": [x["name"] for x in wallets[w]["hits"].values()],
+                           "pnl": wallets[w].get("pnl")} for w in smart],
         "tracked_wallets": len(wallets), "bots": sum(1 for r in wallets.values() if r.get("bot")),
         "recent_buys": sorted(state["buys"], key=lambda b: -b["ts"])[:50],
         "alerts": sorted(state["alerts"], key=lambda a: -a["ts"]),
@@ -506,7 +751,9 @@ def cmd_status(args) -> None:
 def main() -> None:
     p = argparse.ArgumentParser(description="Alertes smart money sur les memecoins Solana (aucun achat).")
     sub = p.add_subparsers(dest="cmd", required=True)
-    sub.add_parser("discover", help="Met à jour la liste des smart wallets (1 fois/jour).")
+    sub.add_parser("discover", help="Met à jour la liste des smart wallets, leur rentabilité et envoie le TOP 5 (1 fois/jour).")
+    pn = sub.add_parser("pnl", help="Mesure la rentabilité réelle de tous les smart wallets et envoie le TOP 5.")
+    pn.add_argument("--no-send", action="store_true", help="Test : n'envoie rien sur Telegram.")
     mo = sub.add_parser("monitor", help="Surveille leurs achats et alerte en cas de convergence (toutes les 15 min).")
     mo.add_argument("--no-send", action="store_true", help="Test : n'envoie rien sur Telegram.")
     st = sub.add_parser("status", help="État : smart wallets, derniers achats, alertes et leur suite.")
@@ -514,7 +761,7 @@ def main() -> None:
     args = p.parse_args()
     global DRY_RUN
     DRY_RUN = bool(getattr(args, "no_send", False))
-    {"discover": cmd_discover, "monitor": cmd_monitor, "status": cmd_status}[args.cmd](args)
+    {"discover": cmd_discover, "monitor": cmd_monitor, "pnl": cmd_pnl, "status": cmd_status}[args.cmd](args)
 
 
 if __name__ == "__main__":

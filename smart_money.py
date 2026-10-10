@@ -68,6 +68,7 @@ BOT_MAX_TX_PER_RUN = 60           # un portefeuille qui fait plus de 60 transact
 BOT_MAX_BUYS_PER_HOUR = 8         # plus de 8 jetons différents achetés en une heure : robot de trading, écarté
 ALERT_MIN_MCAP, ALERT_MIN_LIQ = 50_000, 10_000  # sous ces montants : micro-jeton manipulable, pas d'alerte
 ALERT_MAX_PER_RUN = 3
+HELIUS_MONTHLY_BUDGET = 850_000    # sur 1M gratuits : au-delà de sa part du jour, la surveillance saute des passages
 BATCH_FROM = 10                   # à partir de 10 nouvelles transactions : lecture groupée (moins de crédits Helius)
 
 
@@ -318,6 +319,9 @@ def cmd_discover(args) -> None:
         for o, acc in zip(chunk, accs):
             wallets[o]["personal"] = bool(acc) and acc.get("owner") == "11111111111111111111111111111111"
     save(WALLETS_PATH, wallets)
+    st = load(STATE_PATH, {"last_sig": {}, "buys": [], "alerts": []})
+    add_credits(st, t, h.credits)
+    save(STATE_PATH, st)
     smart = smart_list(wallets)
     print(f"Acteurs distincts parmi les smart wallets : {len(set(actor_map(wallets, smart).values()))}")
     print(f"Portefeuilles suivis : {len(wallets)} · smart wallets (>= {SMART_MIN_HITS} gagnants) : {len(smart)} · crédits Helius {h.credits}")
@@ -359,10 +363,28 @@ def fmt_usd(v) -> str:
     return f"{v / 1e6:.2f} M$" if v >= 1e6 else f"{v / 1e3:.0f} k$"
 
 
+def budget_ok(state: dict, t: int) -> bool:
+    """Garde-fou du quota Helius gratuit : la part du jour (budget mensuel / jours du mois) ne doit pas être dépassée.
+    Les crédits de chaque jour sont tenus dans state["credits"] (découverte comprise)."""
+    day = iso(t)[:10]
+    used = state.get("credits", {}).get(day, 0)
+    return used < HELIUS_MONTHLY_BUDGET / 31
+
+
+def add_credits(state: dict, t: int, n: int) -> None:
+    c = state.setdefault("credits", {})
+    c[iso(t)[:10]] = c.get(iso(t)[:10], 0) + n
+    for d in sorted(c)[:-40]:  # 40 jours d'historique suffisent
+        del c[d]
+
+
 def cmd_monitor(args) -> None:
     h = Helius(os.environ.get("HELIUS_API_KEY", "").strip())
     wallets = load(WALLETS_PATH, {})
     state = load(STATE_PATH, {"last_sig": {}, "buys": [], "alerts": []})
+    if not budget_ok(state, now_ts()):
+        print(f"Budget Helius du jour atteint ({state['credits'][iso(now_ts())[:10]]} crédits) : passage sauté.")
+        return
     smart = smart_list(wallets)
     t = now_ts()
     new_buys = 0
@@ -453,6 +475,7 @@ def cmd_monitor(args) -> None:
                 p = dexscreener(a["mint"]).get("price")
                 if p:
                     a["perf"][lab] = (p / a["price"] - 1) * 100
+    add_credits(state, t, h.credits)
     save(STATE_PATH, state)
     save(WALLETS_PATH, wallets)
     print(f"{len(smart)} smart wallets surveillés · {new_buys} nouveaux achats · alertes au total {len(state['alerts'])} · crédits Helius {h.credits}")

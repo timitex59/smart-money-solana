@@ -8240,7 +8240,8 @@
    "profitable": false,
    "at": "2026-10-10T16:02:55+00:00",
    "partial": true
-  }
+  },
+  "bot": true
  },
  "BGa1z2dv3BhNh8DMzMyDovrmKRaTfSzqJeZp8snp1asz": {
   "hits": {

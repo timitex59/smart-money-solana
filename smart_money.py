@@ -83,7 +83,7 @@ ALERT_REQUIRE_X = True            # analyse X (Grok) indisponible -> pas d'alert
 # Signaux fantômes (comparaison, AUCUN message) : dès que 1, 2 puis 3 acteurs RENTABLES achètent un même jeton (fenêtre
 # de convergence), le prix est noté puis suivi à +1 h, +24 h, +7 j. Même filtres que les alertes (taille, retard).
 SHADOW_LEVELS = (1, 2, 3)
-SHADOW_KEEP_DAYS = 9
+SHADOW_KEEP_DAYS = 45                # tout le mois d'observation, pour le bilan
 HELIUS_MONTHLY_BUDGET = 850_000    # sur 1M gratuits : au-delà de sa part du jour, la surveillance saute des passages
 # Rentabilité réelle des smart wallets (P&L en SOL sur PNL_DAYS jours : vendu + valeur de ce qui est encore détenu − dépensé)
 PNL_DAYS = 30

@@ -155,11 +155,6 @@
  },
  "buys": [
   {
-   "wallet": "SF9TGdsfTPcA3ZVmPdPtYphgzRg6ZqUY4hnjPgjD1MW",
-   "mint": "CiJ3pDG4hveRjfxoJ8BjBEhWTBfRGnVHfQtVGnqBpump",
-   "ts": 1791651661
-  },
-  {
    "wallet": "4HSvNQnbMNdLLsbARbRZMvZrwF6o6XP5C76TGqCPVrEi",
    "mint": "7QBenZkqi4mATQs6rCBTdfJm1pQ4CvQn6osHkotkpump",
    "ts": 1791651752
@@ -298,11 +293,6 @@
    "wallet": "4HSvNQnbMNdLLsbARbRZMvZrwF6o6XP5C76TGqCPVrEi",
    "mint": "FXPypupNwkUaY5XZp5jrZ2PXNJRtKMpYsg8diJdZpump",
    "ts": 1791652514
-  },
-  {
-   "wallet": "5U3KFLj7f8Hrbik97CzN3gSRiQzR1rYh57KuDbJv6TKe",
-   "mint": "CiJ3pDG4hveRjfxoJ8BjBEhWTBfRGnVHfQtVGnqBpump",
-   "ts": 1791651661
   },
   {
    "wallet": "5U3KFLj7f8Hrbik97CzN3gSRiQzR1rYh57KuDbJv6TKe",

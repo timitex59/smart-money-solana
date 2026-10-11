@@ -141,7 +141,7 @@
   "BxMo47JcFjZFM9bpNCibdapL67PVBgTk6JJa6WVU7qwk": "616pduYRY5UZDGDH99abQigiTUWSa1Z7RmVyKYR6YtCqZb6D8Aph4i2tkR7NV8y4Ybe8Unx6hGgGZUuPbMb4FozD",
   "ByHUUDmUiAkkapEUpFQUfm8YT2rABoZ1SBMb7CfSAhQE": "418m2wr1A63pBdcN9x11p6rYymBfqBABxwy6bLbALyrqc9ktMDQYnWt6v9DfmhcuSxP9oqkgAo98FYUrRAm1gkKG",
   "CCUefYreEu9ZTee3RDodfFVxk7QgDumYWN7zyxkgo1Kb": "5owevfh79f2NY6grevXCtGmcCTo9CuceoDA6JdJwsEUgV4xR5RxQMz8Pb3B4jxnmNwVnLseZavE2oCeuCQjePDci",
-  "DkTTY6sz5D3ygVVe9tmJ1sLdEk3LR8DL3q1XMi5SoX7T": "66x1uzq9Rn6Pv5CpLaboujWoPe723rFRS9d3uREFN9Jb4VQN48JzBDMjeF8pSethNzMKNxBkKPR88jNoFBkd4mSH",
+  "DkTTY6sz5D3ygVVe9tmJ1sLdEk3LR8DL3q1XMi5SoX7T": "3fkkUaiVXkRqQvfqyMc27X6UXAiu3gbJZjfKCvdo3KFeCEBEaD3CREHVnxvkvWvtwYyxHV7b9yP7CuvX2Z4SY8Kq",
   "ETWT2YrJh1BjHwZWsKyV4yRR9NMbQXyhFnESHK6wtk2f": "2cNT7SSGhC71WEyTbUHo7F3FTSUF45o7zd71ggEqcmd5tzQtGNrGouMzgimxTiR6Mikrtvj6VWTVwpz5BgxsQoMr",
   "F6pq4UnxJVGfNiFdW9YJG1QPppvNuCdFWTNqdWqpeiCZ": "3kLoGZEacSY9RNTMvS1iH4j82QiFhVmvF6kAb4M3KVyboKRPAL5MiYFm4pN3B2k2brWe43i2YTExMwPUuTLK5EJx",
   "GN2CGUyYYLakXQmeiNtfvxcNDviKM9biqQMnxfEPzF4C": "tyUsoYgqEpdHzYThu8vVnv2ctTCfF1mbKhbXBY2bbqhNkDTXhMPM36ceRdw9pQj22m8SzLP5P7nHESSp1crGJbc",
@@ -7123,6 +7123,11 @@
    "wallet": "DkTTY6sz5D3ygVVe9tmJ1sLdEk3LR8DL3q1XMi5SoX7T",
    "mint": "4JYQ2qyT3QDa1PsKLoviqehF1Vn7AihhuQHSRXsgpump",
    "ts": 1791751489
+  },
+  {
+   "wallet": "DkTTY6sz5D3ygVVe9tmJ1sLdEk3LR8DL3q1XMi5SoX7T",
+   "mint": "4JYQ2qyT3QDa1PsKLoviqehF1Vn7AihhuQHSRXsgpump",
+   "ts": 1791751561
   }
  ],
  "alerts": [
@@ -7245,7 +7250,7 @@
  ],
  "credits": {
   "2026-10-10": 8523,
-  "2026-10-11": 11937
+  "2026-10-11": 11963
  },
  "ledger": {
   "5QY3MBvLEsP4xjE4SNYJYPuwvJgoBUrDnvSaZUNsNHZT": {
@@ -130764,15 +130769,15 @@
      "last": 1791751009
     },
     "4JYQ2qyT3QDa1PsKLoviqehF1Vn7AihhuQHSRXsgpump": {
-     "spent": 0.031570616,
-     "recv": 0.030764272,
-     "bought": 30529.4248,
-     "sold": 30529.4248,
+     "spent": 0.041605896,
+     "recv": 0.041700393,
+     "bought": 44086.987714,
+     "sold": 44086.987714,
      "first": 1791751225,
-     "last": 1791751496
+     "last": 1791751567
     }
    },
-   "synced": 1791751496,
+   "synced": 1791751567,
    "backfilled": 1791691273,
    "partial": true
   },

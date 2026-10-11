@@ -103,7 +103,7 @@
   "ByLZqXnz1rQgKGmMRj98ktM4zSVLZMFaRT1i3s1wZH1m": "2N25Y2emtCsfqihfWVUuohPjAAkoogVJcitwraHTRLVWdFWmBTW9ZTQqEM1HB63j1tCfZqRDUBcu6HG3oCQjZW1m",
   "C3A52EvMkxYKXuTREHufNNZ7r6WRKVRzzhssYpoV1Unr": "3eVq2miXnxxEVR5vMvprzDWXXXjEJA9cfiR78Ksj3XS19WLao3yW5zRKuCDqno6fAgJQTH2qWUBVBq2HnVioauok",
   "CuoCeEPgrm6zj8endAcRdWiccpPD1HygZDTNbCm8FHoX": "289RzBugUEecv55VoBYNeTemZr62z7oM7FskMgi8savN2y6kQCVjmzMGPBZZm8n3NyExbQe78fcANaoxUCf7nuBG",
-  "Cxo9BLrexmsg2QiPNKeda1ZdNyh6aNh3mGaZZfH3r5u8": "3k8A97Te3ru4Newjg5JNQUH63kLrUsSiGMtzxDmbxT1dKcGBWHNsCCHJ7M6NmSsXaSEnH7m5MFr1F4Zq83BhScR9",
+  "Cxo9BLrexmsg2QiPNKeda1ZdNyh6aNh3mGaZZfH3r5u8": "55netxFVgFrQeEYngkyQzTGekwbR1tRuyHM5w3FUTSPYLyYz2g5HkCbKkb3kn14p7UykGgUP8pwdGwvCrHFsrtXE",
   "DFFXHcmTgdBe5NPVXryoarPc4KYGNM3zWQ5K1PhPZccn": "4U28RMbyBXVTRw2xzccYwuihJpLr4FP1Ut2eR514sirw4XXkejGy2xgJw1nmCxELXuVJdrcjA2aSmy4oMcsYB6g6",
   "DSmkz9ztNRJGjqWMB3zmxR6bTg1y42AvSZciWj3f74Ut": "RWE8YBCBTKEHgEcjfUisoD6WZ6wdKANQoegsmw2d7Hx9C8KDVj2AoATyxqFvswcfiJNZB1u1SvgYBfL9ZSQy44Y",
   "EGpYE7LJ31X41W5Yi6ocDiVLYYu4qbam8pbNWpJo6cLL": "3D2kotqf3yH2uZUDBBThPxYVf76RgS8a8BpPBztwkodgoE1CGPbMwvYcCMDinffufNRtNd9ip8MNUvMHe6JSLYtx",
@@ -144,7 +144,7 @@
   "DkTTY6sz5D3ygVVe9tmJ1sLdEk3LR8DL3q1XMi5SoX7T": "3fkkUaiVXkRqQvfqyMc27X6UXAiu3gbJZjfKCvdo3KFeCEBEaD3CREHVnxvkvWvtwYyxHV7b9yP7CuvX2Z4SY8Kq",
   "ETWT2YrJh1BjHwZWsKyV4yRR9NMbQXyhFnESHK6wtk2f": "2cNT7SSGhC71WEyTbUHo7F3FTSUF45o7zd71ggEqcmd5tzQtGNrGouMzgimxTiR6Mikrtvj6VWTVwpz5BgxsQoMr",
   "F6pq4UnxJVGfNiFdW9YJG1QPppvNuCdFWTNqdWqpeiCZ": "3kLoGZEacSY9RNTMvS1iH4j82QiFhVmvF6kAb4M3KVyboKRPAL5MiYFm4pN3B2k2brWe43i2YTExMwPUuTLK5EJx",
-  "GN2CGUyYYLakXQmeiNtfvxcNDviKM9biqQMnxfEPzF4C": "tyUsoYgqEpdHzYThu8vVnv2ctTCfF1mbKhbXBY2bbqhNkDTXhMPM36ceRdw9pQj22m8SzLP5P7nHESSp1crGJbc",
+  "GN2CGUyYYLakXQmeiNtfvxcNDviKM9biqQMnxfEPzF4C": "3y9qFNHbkxNGBdnpHh2DCcfQjVrFRnEFXnZ4vimosDZusYNnKJdNBPNtJupKowPPS8nC1WwVs8ZSumc4nu12Qs91",
   "GoxPKZEmL9XGxeWkx8Yad2GaiHmBEX7t9Nebj6e6uYUq": "N47vdRJ5Ubu9enDKaKJKD3NSvrjfpsVcFxrUFXDVTgq7eenAgL2XRFFcwaRxLaCK2Yr6GCZenAnJXHssVYc8kKy",
   "HFX2dqzyQeRAdkjp41D4qThfsPPSyBDkVoruBr93zhY9": "WpVCTVTKg7m8QBBJAkGTaoMSpYP1cftz9TirJg3y83f5u9KhEtG4w1QF3Avi4ppEESFeb6hL4qvVu5H1TxNvGwv",
   "HodLXSGKApwv2ZYi1BTwo5DAwwxWV4zhMGa4Wz17URvd": "2A2CXzhtqrtzU9dwXWFmpdRVvVrf3pY3AZws9zrz9WA5zvPoo8fogvU84oQozVe6hf7eGtTuX9oY5sFZ6oNU2jU7",
@@ -178,11 +178,6 @@
    "wallet": "ByLZqXnz1rQgKGmMRj98ktM4zSVLZMFaRT1i3s1wZH1m",
    "mint": "6Bn2jFYTsEQad2THm2sQg9gWvY5cUke1muuPbEPpump",
    "ts": 1791665401
-  },
-  {
-   "wallet": "FEDXXgmWCakJZnUKPpfqrf5rseudrTHr23mLe4Hsre1s",
-   "mint": "Fy6R7i9gfCSmtz3tCdmv4mVKLxPAp8qJFvLNvi5Apump",
-   "ts": 1791665207
   },
   {
    "wallet": "FEDXXgmWCakJZnUKPpfqrf5rseudrTHr23mLe4Hsre1s",
@@ -7250,7 +7245,7 @@
  ],
  "credits": {
   "2026-10-10": 8523,
-  "2026-10-11": 11963
+  "2026-10-11": 11989
  },
  "ledger": {
   "5QY3MBvLEsP4xjE4SNYJYPuwvJgoBUrDnvSaZUNsNHZT": {
@@ -77231,7 +77226,7 @@
      "last": 1791730414
     }
    },
-   "synced": 1791751335,
+   "synced": 1791751613,
    "backfilled": 1791648175,
    "partial": false
   },
@@ -135054,7 +135049,7 @@
      "last": 1791748195
     }
    },
-   "synced": 1791751395,
+   "synced": 1791751731,
    "backfilled": 1791691273,
    "partial": true
   },

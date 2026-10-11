@@ -103,7 +103,7 @@
   "ByLZqXnz1rQgKGmMRj98ktM4zSVLZMFaRT1i3s1wZH1m": "2N25Y2emtCsfqihfWVUuohPjAAkoogVJcitwraHTRLVWdFWmBTW9ZTQqEM1HB63j1tCfZqRDUBcu6HG3oCQjZW1m",
   "C3A52EvMkxYKXuTREHufNNZ7r6WRKVRzzhssYpoV1Unr": "3eVq2miXnxxEVR5vMvprzDWXXXjEJA9cfiR78Ksj3XS19WLao3yW5zRKuCDqno6fAgJQTH2qWUBVBq2HnVioauok",
   "CuoCeEPgrm6zj8endAcRdWiccpPD1HygZDTNbCm8FHoX": "289RzBugUEecv55VoBYNeTemZr62z7oM7FskMgi8savN2y6kQCVjmzMGPBZZm8n3NyExbQe78fcANaoxUCf7nuBG",
-  "Cxo9BLrexmsg2QiPNKeda1ZdNyh6aNh3mGaZZfH3r5u8": "2Comozbe3qu4WnCarztonWQLDWjRb3a53CCwmanptsfRzEKzqK9xDuzs2c1ckw6EYENSuNnDFEsYEUmP8A1hBRNJ",
+  "Cxo9BLrexmsg2QiPNKeda1ZdNyh6aNh3mGaZZfH3r5u8": "5YBJZKX4Qq4ZXsZmXKwxJBWL9cWeHNkbRnaAfw9MEgw7ubYNPuLtyZFSd29CrpBMUQTdaEmEfkTr47PmV61Z3Amw",
   "DFFXHcmTgdBe5NPVXryoarPc4KYGNM3zWQ5K1PhPZccn": "4U28RMbyBXVTRw2xzccYwuihJpLr4FP1Ut2eR514sirw4XXkejGy2xgJw1nmCxELXuVJdrcjA2aSmy4oMcsYB6g6",
   "DSmkz9ztNRJGjqWMB3zmxR6bTg1y42AvSZciWj3f74Ut": "RWE8YBCBTKEHgEcjfUisoD6WZ6wdKANQoegsmw2d7Hx9C8KDVj2AoATyxqFvswcfiJNZB1u1SvgYBfL9ZSQy44Y",
   "EGpYE7LJ31X41W5Yi6ocDiVLYYu4qbam8pbNWpJo6cLL": "587Z6xD9zxzdUSyyT1FvBWpMvhF2w9MGdWhGyQm45ipXxvNQwvPmrxMj5BanXUWy1xcHG7FauqEiDxAZjVwPYErb",
@@ -154,11 +154,6 @@
   "VJSDW6S74YXR4rRR9P4xwhMvLZJQMhrUb8XMFirUsy1": "x3a1XgCPy4PSBy6jmE1jWzGqLMcrND1gqKURozmDUdxn67d8hs6QDZLeW9m67Lmn1rGLxeX7stY8bcNotzuFTW5"
  },
  "buys": [
-  {
-   "wallet": "26Dm7TatVSBHyWWABb97uvausvhpSC1izyu2M4PUch1f",
-   "mint": "5mE1ikTX1HiQjH8YtiyHBfJ6B17XgQC3z4Kiwaf5pump",
-   "ts": 1791662991
-  },
   {
    "wallet": "26Dm7TatVSBHyWWABb97uvausvhpSC1izyu2M4PUch1f",
    "mint": "815NrWiT7cc5jQKAAPhjXGSbrqYna5y3cQuS8h9x4LNC",
@@ -233,11 +228,6 @@
    "wallet": "67Nwfi9hgwqhxGoovT2JGLU67uxfomLwQAWncjXXzU6U",
    "mint": "9WvPnC47884Am9w5cprwiohMHJZ2kPGe9vSKgEqZpump",
    "ts": 1791663163
-  },
-  {
-   "wallet": "68xaw2jz26BwR6yRtQxdX1Xb7cyGKrdaNMzAy6WXWMK9",
-   "mint": "87aemjYj3JPEu8YnmLXSK6D1v9SurhaXNmQ2Xtdzpump",
-   "ts": 1791662850
   },
   {
    "wallet": "68xaw2jz26BwR6yRtQxdX1Xb7cyGKrdaNMzAy6WXWMK9",
@@ -7510,7 +7500,7 @@
  ],
  "credits": {
   "2026-10-10": 8523,
-  "2026-10-11": 11468
+  "2026-10-11": 11493
  },
  "ledger": {
   "5QY3MBvLEsP4xjE4SNYJYPuwvJgoBUrDnvSaZUNsNHZT": {
@@ -77427,7 +77417,7 @@
      "last": 1791730414
     }
    },
-   "synced": 1791749015,
+   "synced": 1791749256,
    "backfilled": 1791648175,
    "partial": false
   },

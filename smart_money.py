@@ -76,6 +76,10 @@ BOT_MAX_TX_PER_RUN = 60           # un portefeuille qui fait plus de 60 transact
 BOT_MAX_BUYS_PER_HOUR = 8         # plus de 8 jetons différents achetés en une heure : robot de trading, écarté
 ALERT_MIN_MCAP, ALERT_MIN_LIQ = 50_000, 10_000  # sous ces montants : micro-jeton manipulable, pas d'alerte
 ALERT_MAX_PER_RUN = 3
+# Alerte trop tardive (bilan des premières alertes : toutes à -39/-75 % en 1 h, les acheteurs revendaient déjà) :
+ALERT_MAX_SOLD_PCT = 20           # un acheteur a déjà revendu >= 20 % de ses jetons -> pas d'alerte
+ALERT_MAX_RUNUP_PCT = 50          # prix déjà > +50 % au-dessus du prix d'entrée moyen des acheteurs -> pas d'alerte
+ALERT_REQUIRE_X = True            # analyse X (Grok) indisponible -> pas d'alerte
 HELIUS_MONTHLY_BUDGET = 850_000    # sur 1M gratuits : au-delà de sa part du jour, la surveillance saute des passages
 # Rentabilité réelle des smart wallets (P&L en SOL sur PNL_DAYS jours : vendu + valeur de ce qui est encore détenu − dépensé)
 PNL_DAYS = 30
@@ -808,6 +812,28 @@ def cmd_monitor(args) -> None:
         info = dexscreener(mint)
         if float(info.get("mcap") or 0) < ALERT_MIN_MCAP or float(info.get("liq") or 0) < ALERT_MIN_LIQ:
             continue  # micro-jeton (souvent encore en phase de lancement pump.fun, sans liquidité réelle)
+        # Retard : les acheteurs suivis ont-ils déjà commencé à revendre, ou le prix a-t-il déjà décollé depuis leur entrée ?
+        late = []
+        entries = []
+        for w in ws:
+            tk = (ledgers.get(w) or {}).get("tokens", {}).get(mint)
+            if not tk or tk["bought"] <= 0:
+                continue
+            sold_pct = tk["sold"] / tk["bought"] * 100
+            if sold_pct >= ALERT_MAX_SOLD_PCT:
+                late.append(f"{w[:4]}… a déjà revendu {sold_pct:.0f} %")
+            if tk["spent"] > 0:
+                entries.append(tk["spent"] / tk["bought"])  # prix d'entrée moyen en SOL par jeton
+        price_sol = float(info.get("price") or 0) / usd if usd else 0
+        if entries and price_sol:
+            runup = (price_sol / (sum(entries) / len(entries)) - 1) * 100
+            if runup > ALERT_MAX_RUNUP_PCT:
+                late.append(f"prix déjà +{runup:.0f} % au-dessus de leur entrée")
+        if late:
+            state.setdefault("blocked", []).append({"mint": mint, "ts": t, "symbol": info.get("symbol"), "dangers": ["Trop tard : " + " ; ".join(late)],
+                                                    "actors": n_actors, "mcap": info.get("mcap"), "price": info.get("price")})
+            state["blocked"] = state["blocked"][-200:]
+            continue
         rc = rugcheck(mint)
         if rc.get("dangers"):
             # Filtre RugCheck : un risque de niveau « danger » (créateur ayant déjà fait des arnaques, création de jetons ou
@@ -818,6 +844,11 @@ def cmd_monitor(args) -> None:
             state["blocked"] = state["blocked"][-200:]
             continue
         xa = grok_x_analysis(state, t, mint, info)
+        if ALERT_REQUIRE_X and xa.get("error"):
+            state.setdefault("blocked", []).append({"mint": mint, "ts": t, "symbol": info.get("symbol"), "dangers": ["X : analyse indisponible (" + str(xa["error"])[:60] + ")"],
+                                                    "actors": n_actors, "mcap": info.get("mcap"), "price": info.get("price")})
+            state["blocked"] = state["blocked"][-200:]
+            continue
         if xa.get("verdict") == "red":
             # Filtre X : la communauté signale une arnaque (bundle, rug, initiés…) — ce que RugCheck ne voit pas toujours.
             state.setdefault("blocked", []).append({"mint": mint, "ts": t, "symbol": info.get("symbol"), "dangers": ["X : " + (xa.get("scam_signals") or "signaux d'arnaque")],

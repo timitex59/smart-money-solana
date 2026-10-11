@@ -139,7 +139,7 @@
   "Ay8Epicw7mpGAHefYd9V4187yEdwUvPbpLWtHzUCVSsF": "4eu5e5PFfiLcnsdAyK7hinCXF8aD3jRQyYSKUd1mZNfqatupdbQ1p9G5vLwEYTqZdDHYG9hFZkQyBiVUBr66VTrw",
   "BEvw9mQbfQwbnQKy4XJQuxDbADuJMAhKaUVtdjj4fz8N": "mrSmQ5tZRfGCdryodXRyZV59zJSPY6AnHcXddEWtkK1emqAt1KweWQHzUxQmiQR8cvM1HYAudxqDJ7GaLKfAuLa",
   "BxMo47JcFjZFM9bpNCibdapL67PVBgTk6JJa6WVU7qwk": "616pduYRY5UZDGDH99abQigiTUWSa1Z7RmVyKYR6YtCqZb6D8Aph4i2tkR7NV8y4Ybe8Unx6hGgGZUuPbMb4FozD",
-  "ByHUUDmUiAkkapEUpFQUfm8YT2rABoZ1SBMb7CfSAhQE": "evgtzcFnMBFjwiDB6L7219AUhJtVvydaKajRdyeT47bCPEh62HjYM3L37RL2nDWieDU3br7PzLuVqdAoyFbKVo4",
+  "ByHUUDmUiAkkapEUpFQUfm8YT2rABoZ1SBMb7CfSAhQE": "365tgmUE2dWjkrxyodiaLhK2af7ZbRTvCcSxiV2o1QiSxhtRTf9bjaPfHvXJ77S6vHPR8ZkEDAowZDoFtgc5jA9B",
   "CCUefYreEu9ZTee3RDodfFVxk7QgDumYWN7zyxkgo1Kb": "4jNzUD4C8TwZDw4ebwjxVGfqq9c1b1MUqBziKiUMa6UduQh2VJipLe8iSbZLuLtG37RgnzhjoxuPeA1zsozoh1k3",
   "DkTTY6sz5D3ygVVe9tmJ1sLdEk3LR8DL3q1XMi5SoX7T": "2VqxRtUv6knzKoA9Ewy2vneXzSqQCg27bcWcSvHx1g3CJLWaNSyDVr8GZW3HgiN2g2XrvWQoKksCjjzyHuE68JR",
   "ETWT2YrJh1BjHwZWsKyV4yRR9NMbQXyhFnESHK6wtk2f": "2cNT7SSGhC71WEyTbUHo7F3FTSUF45o7zd71ggEqcmd5tzQtGNrGouMzgimxTiR6Mikrtvj6VWTVwpz5BgxsQoMr",
@@ -14328,6 +14328,11 @@
    "wallet": "GN2CGUyYYLakXQmeiNtfvxcNDviKM9biqQMnxfEPzF4C",
    "mint": "E1Ay5MFuK4ADYgQDp3QmR1Q45UW3HQyfwQHeVotNmDMv",
    "ts": 1791728130
+  },
+  {
+   "wallet": "ByHUUDmUiAkkapEUpFQUfm8YT2rABoZ1SBMb7CfSAhQE",
+   "mint": "CMrDQwKGRZ5qkSSfptgLpm3PZbGCRDBwEBNACmNCViSw",
+   "ts": 1791728198
   }
  ],
  "alerts": [
@@ -14447,7 +14452,7 @@
  ],
  "credits": {
   "2026-10-10": 8523,
-  "2026-10-11": 7242
+  "2026-10-11": 7270
  },
  "ledger": {
   "5QY3MBvLEsP4xjE4SNYJYPuwvJgoBUrDnvSaZUNsNHZT": {
@@ -133910,9 +133915,17 @@
      "sold": 0.0,
      "first": 1791728048,
      "last": 1791728048
+    },
+    "CMrDQwKGRZ5qkSSfptgLpm3PZbGCRDBwEBNACmNCViSw": {
+     "spent": 0.10162884,
+     "recv": 0.0,
+     "bought": 790671.484243,
+     "sold": 0.0,
+     "first": 1791728198,
+     "last": 1791728198
     }
    },
-   "synced": 1791728048,
+   "synced": 1791728198,
    "backfilled": 1791691273,
    "partial": true
   },

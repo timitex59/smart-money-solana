@@ -155,26 +155,6 @@
  },
  "buys": [
   {
-   "wallet": "ByLZqXnz1rQgKGmMRj98ktM4zSVLZMFaRT1i3s1wZH1m",
-   "mint": "8DAkjpoFytMqAFY4m2vTEUo6sVT65ZtMZSgNFB1Ppump",
-   "ts": 1791659714
-  },
-  {
-   "wallet": "FEDXXgmWCakJZnUKPpfqrf5rseudrTHr23mLe4Hsre1s",
-   "mint": "9g4Pib6AM3oVdP9YA7ZcssAXAuhoUzkjR8w27doYpump",
-   "ts": 1791659716
-  },
-  {
-   "wallet": "FEDXXgmWCakJZnUKPpfqrf5rseudrTHr23mLe4Hsre1s",
-   "mint": "9g4Pib6AM3oVdP9YA7ZcssAXAuhoUzkjR8w27doYpump",
-   "ts": 1791659730
-  },
-  {
-   "wallet": "G5aheRXkXSuMJTnvVqaMzXV15H27uGEJWYDuHwFyP4hk",
-   "mint": "FyWQWB8FRVNt7xn2HtLY4ZmtoVtPy58ZYGr9CgeGrjNj",
-   "ts": 1791659712
-  },
-  {
    "wallet": "31pktyQEJuqy8uLAPssUVzwdGu9xukpndspBNSq7R1vg",
    "mint": "HbkAmeEcyUugA87s9MJZ5e4XvQHy7XhJjVHvyJ5upump",
    "ts": 1791660148
@@ -7560,7 +7540,7 @@
  ],
  "credits": {
   "2026-10-10": 8523,
-  "2026-10-11": 10894
+  "2026-10-11": 10918
  },
  "ledger": {
   "5QY3MBvLEsP4xjE4SNYJYPuwvJgoBUrDnvSaZUNsNHZT": {

@@ -91,6 +91,7 @@ PROFIT_MIN_SOL, PROFIT_MIN_ROI = 1.0, 10.0       # …et au moins +1 SOL et +10 
 ALERT_MIN_PROFITABLE = 2          # une alerte exige au moins 2 acheteurs réellement rentables
 TOP_N = 5
 # Analyse X (Twitter) de chaque alerte par Grok (xAI, payant à l'usage : ~0,14 $ par analyse) — clé GROK_API_KEY
+GROK_ENABLED = False              # analyse X écartée pour l'instant (choix utilisateur du 11/10/2026) : ni appel, ni filtre
 GROK_MODEL = "grok-4.20-0309-non-reasoning"
 GROK_MAX_PER_DAY = 10             # garde-fou de dépense : 10 analyses/jour au plus (~1,40 $)
 BATCH_FROM = 10                   # à partir de 10 nouvelles transactions : lecture groupée (moins de crédits Helius)
@@ -843,8 +844,8 @@ def cmd_monitor(args) -> None:
                                                     "actors": n_actors, "mcap": info.get("mcap"), "price": info.get("price")})
             state["blocked"] = state["blocked"][-200:]
             continue
-        xa = grok_x_analysis(state, t, mint, info)
-        if ALERT_REQUIRE_X and xa.get("error"):
+        xa = grok_x_analysis(state, t, mint, info) if GROK_ENABLED else {}
+        if GROK_ENABLED and ALERT_REQUIRE_X and xa.get("error"):
             state.setdefault("blocked", []).append({"mint": mint, "ts": t, "symbol": info.get("symbol"), "dangers": ["X : analyse indisponible (" + str(xa["error"])[:60] + ")"],
                                                     "actors": n_actors, "mcap": info.get("mcap"), "price": info.get("price")})
             state["blocked"] = state["blocked"][-200:]
@@ -869,8 +870,7 @@ def cmd_monitor(args) -> None:
                   if rc else "RugCheck : indisponible au moment de l'alerte ⚠️ — vérifiez sur rugcheck.xyz")
                  + (f" · LP verrouillée {rc['lp_locked']:.0f} %" if rc.get("lp_locked") is not None else ""),
                  "",
-                 *grok_lines(xa),
-                 "",
+                 *((grok_lines(xa) + [""]) if GROK_ENABLED else []),
                  "Acheteurs (rentabilité réelle) :",
                  *("• " + wallet_line(x, wallets.get(x, {}).get("pnl"), rank)
                    for x in sorted(ws, key=lambda x: -(wallets.get(x, {}).get("pnl", {}).get("pnl_sol") or -1e9))),

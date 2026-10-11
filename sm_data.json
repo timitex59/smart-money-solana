@@ -133,7 +133,7 @@
   "94SiWU5bW7BeKjsg5gg9fWZb5ANy56dt9k6z8oNPxUxF": "32k5vwCJ3uvmkBY7uS4QWRtogr2SDLpRC6LKZakZnijZDyiAQMzBgvhKm9bAtgcpjy6jWXG9rdkYgE1M1jmTmm2S",
   "9aMZN5sh6yYsvBTGQfnDiiZvFDMLnFRi8dbRsHWmZ7Z": "4ECe74UiWFXX7cZcdjqxT5ieisS9yLqsCx5qXkCJyAcCefgVk2uh8y26KPEK9pTHFac6FAtA8B3seoxUTzUKs9bb",
   "9wZKBHJhuo2ytDxAX6ZMRojcdKYXx5BAfC8JJwDLtwgU": "5dUNgRvCgPVdxtbQwjK332uyxfpn93b2wQ318n7JakBNRFRdRCKP2qGBJRQThUcjBcjnEu9yoZoQXKoz97nVetHL",
-  "ARVke5YDTZQBDcgQnshtUEWHAjWVJzn8hurgVSHE19o5": "4dXUehMcBKmU2wmeod3Y8JDjvY3D9hd9CYWAYiK41M62pP6b8pLgjamboWrLGuZfSVH7rKLsQywr3gSEThBrB167",
+  "ARVke5YDTZQBDcgQnshtUEWHAjWVJzn8hurgVSHE19o5": "615oXiD3BVXD9h6j5W2KS2sduy2zmc6L2yrQD1WAAjPXAjdRn3oy8GXWL9PM7aSttFRPjCHFvozsiwzMvgVtTDrx",
   "ArqcZqiMjnyFtVcHGXqiScQbkYKfUUahKvZbHmeqSNUY": "61Juat8ePkbMfxfCtHvZkRJjvgkwp1r5QabmkB9M1acLdxpZibCfWBn1YWjJerE9Y8ahxTmFtcWHPHt8wtedHxH9",
   "AtciBJYGairJoC7QRj7VfK3q7LbTgJbPvw776fpB2apD": "2R1LtvFJivKnj1QnMmQrizL9pTMiDxpUtd2DHmZPJNR9RAumxyWCroRjo64rdsHebqwYpoUUpGSDhw9vSsPTzMA",
   "Ay8Epicw7mpGAHefYd9V4187yEdwUvPbpLWtHzUCVSsF": "4gFWrVRZQZUdbwYEQGZAsGiDiX3ppZj9VfxH2T7UZmhfNDZM6Cc23xZ7GpsEGVsdDQB1ZEpqdWscTggzT5krGoQD",
@@ -154,56 +154,6 @@
   "VJSDW6S74YXR4rRR9P4xwhMvLZJQMhrUb8XMFirUsy1": "x3a1XgCPy4PSBy6jmE1jWzGqLMcrND1gqKURozmDUdxn67d8hs6QDZLeW9m67Lmn1rGLxeX7stY8bcNotzuFTW5"
  },
  "buys": [
-  {
-   "wallet": "5QY3MBvLEsP4xjE4SNYJYPuwvJgoBUrDnvSaZUNsNHZT",
-   "mint": "CANhLV5Fas6BtHXyvrahL3nHaPJgJyxQnxHT8cZipump",
-   "ts": 1791657902
-  },
-  {
-   "wallet": "5QY3MBvLEsP4xjE4SNYJYPuwvJgoBUrDnvSaZUNsNHZT",
-   "mint": "2k51PZoBkCBmxWAP3eZEwXN54r49QyqV7m6zVBhqpump",
-   "ts": 1791657904
-  },
-  {
-   "wallet": "5QY3MBvLEsP4xjE4SNYJYPuwvJgoBUrDnvSaZUNsNHZT",
-   "mint": "Da4GQpjcvNJxeRD3dcMzbUCJHyNmg6FCchuweBdhpump",
-   "ts": 1791657913
-  },
-  {
-   "wallet": "31pktyQEJuqy8uLAPssUVzwdGu9xukpndspBNSq7R1vg",
-   "mint": "5RhY4hfW3gfYMZNuUzUKDwMyHMVhpDf7uUUYPczUpump",
-   "ts": 1791657918
-  },
-  {
-   "wallet": "66B95ED19CLsJtsVYPkTBQT3EZPPpEawCimCPruVucSX",
-   "mint": "5RhY4hfW3gfYMZNuUzUKDwMyHMVhpDf7uUUYPczUpump",
-   "ts": 1791657918
-  },
-  {
-   "wallet": "67Nwfi9hgwqhxGoovT2JGLU67uxfomLwQAWncjXXzU6U",
-   "mint": "5RhY4hfW3gfYMZNuUzUKDwMyHMVhpDf7uUUYPczUpump",
-   "ts": 1791657918
-  },
-  {
-   "wallet": "8wYV1CxGTauYamagHuEKK7XVjCUuBjE42xQJC91m6z1b",
-   "mint": "5RhY4hfW3gfYMZNuUzUKDwMyHMVhpDf7uUUYPczUpump",
-   "ts": 1791657918
-  },
-  {
-   "wallet": "EGpYE7LJ31X41W5Yi6ocDiVLYYu4qbam8pbNWpJo6cLL",
-   "mint": "5RhY4hfW3gfYMZNuUzUKDwMyHMVhpDf7uUUYPczUpump",
-   "ts": 1791657918
-  },
-  {
-   "wallet": "FEDXXgmWCakJZnUKPpfqrf5rseudrTHr23mLe4Hsre1s",
-   "mint": "Fy6R7i9gfCSmtz3tCdmv4mVKLxPAp8qJFvLNvi5Apump",
-   "ts": 1791657917
-  },
-  {
-   "wallet": "L3Nd9vH5sikJEjzLYwisR7aMnLNKvboaEhq8KdHBHpt",
-   "mint": "5RhY4hfW3gfYMZNuUzUKDwMyHMVhpDf7uUUYPczUpump",
-   "ts": 1791657918
-  },
   {
    "wallet": "5U3KFLj7f8Hrbik97CzN3gSRiQzR1rYh57KuDbJv6TKe",
    "mint": "AYPvrtL9F31F99knQABWPfpqDuys5wmx82BGBxA4pump",
@@ -7518,6 +7468,11 @@
    "wallet": "GN2CGUyYYLakXQmeiNtfvxcNDviKM9biqQMnxfEPzF4C",
    "mint": "HZL2ga4kXjZp8377B5TcWBuqvBTtxqK2KZb6mjcnpump",
    "ts": 1791744131
+  },
+  {
+   "wallet": "ARVke5YDTZQBDcgQnshtUEWHAjWVJzn8hurgVSHE19o5",
+   "mint": "BnhQ3ARhYJZwHNLnfJ7sA1moCFkstWaFsqni94TRpump",
+   "ts": 1791744289
   }
  ],
  "alerts": [
@@ -7640,7 +7595,7 @@
  ],
  "credits": {
   "2026-10-10": 8523,
-  "2026-10-11": 10555
+  "2026-10-11": 10580
  },
  "ledger": {
   "5QY3MBvLEsP4xjE4SNYJYPuwvJgoBUrDnvSaZUNsNHZT": {
@@ -120967,15 +120922,15 @@
      "last": 1791742822
     },
     "BnhQ3ARhYJZwHNLnfJ7sA1moCFkstWaFsqni94TRpump": {
-     "spent": 0.21352384000000002,
+     "spent": 0.31952884000000004,
      "recv": 0.33905910499999997,
-     "bought": 759381.9179110001,
+     "bought": 918656.1626950001,
      "sold": 759381.9179110001,
      "first": 1791743214,
-     "last": 1791744007
+     "last": 1791744289
     }
    },
-   "synced": 1791744007,
+   "synced": 1791744289,
    "backfilled": 1791691273,
    "partial": true
   },

@@ -20647,7 +20647,8 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "HodLXSGKApwv2ZYi1BTwo5DAwwxWV4zhMGa4Wz17URvd": {
   "hits": {
@@ -20663,7 +20664,8 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "FL5fRdSfxkMViRP1hXhXqXQeXPbrDhZUs7BmGj3AKxrr": {
   "hits": {

@@ -80,6 +80,10 @@ ALERT_MAX_PER_RUN = 3
 ALERT_MAX_SOLD_PCT = 20           # un acheteur a déjà revendu >= 20 % de ses jetons -> pas d'alerte
 ALERT_MAX_RUNUP_PCT = 50          # prix déjà > +50 % au-dessus du prix d'entrée moyen des acheteurs -> pas d'alerte
 ALERT_REQUIRE_X = True            # analyse X (Grok) indisponible -> pas d'alerte
+# Signaux fantômes (comparaison, AUCUN message) : dès que 1, 2 puis 3 acteurs RENTABLES achètent un même jeton (fenêtre
+# de convergence), le prix est noté puis suivi à +1 h, +24 h, +7 j. Même filtres que les alertes (taille, retard).
+SHADOW_LEVELS = (1, 2, 3)
+SHADOW_KEEP_DAYS = 9
 HELIUS_MONTHLY_BUDGET = 850_000    # sur 1M gratuits : au-delà de sa part du jour, la surveillance saute des passages
 # Rentabilité réelle des smart wallets (P&L en SOL sur PNL_DAYS jours : vendu + valeur de ce qui est encore détenu − dépensé)
 PNL_DAYS = 30
@@ -238,6 +242,82 @@ def dexscreener(mint: str) -> dict:
             "mcap": p.get("marketCap") or p.get("fdv"), "liq": (p.get("liquidity") or {}).get("usd"),
             "created": (p.get("pairCreatedAt") or 0) // 1000, "url": p.get("url"),
             "vol_h1": (p.get("volume") or {}).get("h1"), "chg_h1": (p.get("priceChange") or {}).get("h1")}
+
+
+def dex_batch(mints: list) -> dict:
+    """{mint: {price (USD), mcap, liq}} par lots de 30 (DexScreener, pool le plus liquide). Absent = introuvable."""
+    out = {}
+    mints = list(dict.fromkeys(mints))
+    for i in range(0, len(mints), 30):
+        try:
+            pairs = requests.get("https://api.dexscreener.com/tokens/v1/solana/" + ",".join(mints[i:i + 30]), headers=UA, timeout=20).json()
+        except (requests.RequestException, ValueError):
+            continue
+        for p in pairs if isinstance(pairs, list) else []:
+            m = (p.get("baseToken") or {}).get("address")
+            liq = float((p.get("liquidity") or {}).get("usd") or 0)
+            if m and liq >= (out.get(m, {}).get("liq") or -1):
+                out[m] = {"price": float(p.get("priceUsd") or 0), "mcap": p.get("marketCap") or p.get("fdv"), "liq": liq,
+                          "symbol": (p.get("baseToken") or {}).get("symbol")}
+        time.sleep(0.25)
+    return out
+
+
+def late_reasons(ws, mint: str, ledgers: dict, price_usd: float, usd: float) -> list:
+    """Raisons pour lesquelles un signal arrive trop tard : acheteurs qui revendent déjà, prix déjà envolé."""
+    late, entries = [], []
+    for w in ws:
+        tk = (ledgers.get(w) or {}).get("tokens", {}).get(mint)
+        if not tk or tk["bought"] <= 0:
+            continue
+        sold_pct = tk["sold"] / tk["bought"] * 100
+        if sold_pct >= ALERT_MAX_SOLD_PCT:
+            late.append(f"{w[:4]}… a déjà revendu {sold_pct:.0f} %")
+        if tk["spent"] > 0:
+            entries.append(tk["spent"] / tk["bought"])  # prix d'entrée moyen en SOL par jeton
+    price_sol = price_usd / usd if usd else 0
+    if entries and price_sol:
+        runup = (price_sol / (sum(entries) / len(entries)) - 1) * 100
+        if runup > ALERT_MAX_RUNUP_PCT:
+            late.append(f"prix déjà +{runup:.0f} % au-dessus de leur entrée")
+    return late
+
+
+def shadow_track(state: dict, wallets: dict, by_mint: dict, actors: dict, ledgers: dict, t: int, usd: float) -> None:
+    """Note les signaux fantômes 1/2/3 acteurs rentables et met à jour leur performance (aucun message)."""
+    sh = state.setdefault("shadow", [])
+    have = {(r["mint"], r["level"]) for r in sh if t - r["ts"] < ALERT_COOLDOWN_H * 3600}
+    new = []
+    for mint, ws in by_mint.items():
+        prof = [w for w in ws if wallets.get(w, {}).get("pnl", {}).get("profitable")]
+        n = len({actors.get(w, w) for w in prof})
+        for lvl in SHADOW_LEVELS:
+            if n >= lvl and (mint, lvl) not in have:
+                new.append((mint, lvl, prof))
+    todo_perf = [r for r in sh if any(lab not in r["perf"] and t - r["ts"] >= d for lab, d in (("1h", 3600), ("24h", 86400), ("7j", 7 * 86400)))]
+    info = dex_batch([m for m, _, _ in new] + [r["mint"] for r in todo_perf])
+    for mint, lvl, prof in new:
+        i = info.get(mint)
+        if not i or not i["price"]:
+            continue
+        reason = None
+        if float(i.get("mcap") or 0) < ALERT_MIN_MCAP or float(i.get("liq") or 0) < ALERT_MIN_LIQ:
+            reason = "micro-jeton"
+        else:
+            late = late_reasons(prof, mint, ledgers, i["price"], usd)
+            reason = ("trop tard : " + " ; ".join(late)) if late else None
+        sh.append({"mint": mint, "symbol": i.get("symbol"), "ts": t, "level": lvl, "price": i["price"], "mcap": i.get("mcap"),
+                   "filtered": reason, "perf": {}})
+    for r in todo_perf:
+        for lab, d in (("1h", 3600), ("24h", 86400), ("7j", 7 * 86400)):
+            if lab in r["perf"] or t - r["ts"] < d:
+                continue
+            p = (info.get(r["mint"]) or {}).get("price")
+            if p:
+                r["perf"][lab] = (p / r["price"] - 1) * 100
+            elif t - r["ts"] >= d + 6 * 3600:
+                r["perf"][lab] = -100.0  # plus aucun marché depuis des heures : jeton mort
+    state["shadow"] = [r for r in sh if t - r["ts"] < SHADOW_KEEP_DAYS * 86400]
 
 
 def rugcheck(mint: str) -> dict:
@@ -801,6 +881,10 @@ def cmd_monitor(args) -> None:
         by_mint.setdefault(b["mint"], set()).add(b["wallet"])
     alerted = {a["mint"]: a["ts"] for a in state["alerts"]}
     actors = actor_map(wallets, smart)
+    try:
+        shadow_track(state, wallets, by_mint, actors, ledgers, t, usd)
+    except Exception as exc:  # la comparaison ne doit jamais empêcher les vraies alertes
+        print(f"signaux fantômes : {exc}")
     rank = {w: i for i, (w, _) in enumerate(ranking(wallets), 1)}
     sent = 0
     for mint, ws in sorted(by_mint.items(), key=lambda kv: -len(kv[1])):
@@ -814,22 +898,7 @@ def cmd_monitor(args) -> None:
         if float(info.get("mcap") or 0) < ALERT_MIN_MCAP or float(info.get("liq") or 0) < ALERT_MIN_LIQ:
             continue  # micro-jeton (souvent encore en phase de lancement pump.fun, sans liquidité réelle)
         # Retard : les acheteurs suivis ont-ils déjà commencé à revendre, ou le prix a-t-il déjà décollé depuis leur entrée ?
-        late = []
-        entries = []
-        for w in ws:
-            tk = (ledgers.get(w) or {}).get("tokens", {}).get(mint)
-            if not tk or tk["bought"] <= 0:
-                continue
-            sold_pct = tk["sold"] / tk["bought"] * 100
-            if sold_pct >= ALERT_MAX_SOLD_PCT:
-                late.append(f"{w[:4]}… a déjà revendu {sold_pct:.0f} %")
-            if tk["spent"] > 0:
-                entries.append(tk["spent"] / tk["bought"])  # prix d'entrée moyen en SOL par jeton
-        price_sol = float(info.get("price") or 0) / usd if usd else 0
-        if entries and price_sol:
-            runup = (price_sol / (sum(entries) / len(entries)) - 1) * 100
-            if runup > ALERT_MAX_RUNUP_PCT:
-                late.append(f"prix déjà +{runup:.0f} % au-dessus de leur entrée")
+        late = late_reasons(ws, mint, ledgers, float(info.get("price") or 0), usd)
         if late:
             state.setdefault("blocked", []).append({"mint": mint, "ts": t, "symbol": info.get("symbol"), "dangers": ["Trop tard : " + " ; ".join(late)],
                                                     "actors": n_actors, "mcap": info.get("mcap"), "price": info.get("price")})
@@ -906,6 +975,31 @@ def cmd_pnl(args) -> None:
     print(f"crédits Helius {h.credits}")
 
 
+def shadow_report(state: dict) -> dict:
+    """Par niveau (1/2/3 acteurs rentables) : nombre de signaux retenus et performance moyenne / médiane / % positifs."""
+    out = {}
+    for lvl in SHADOW_LEVELS:
+        rows = [r for r in state.get("shadow", []) if r["level"] == lvl and not r.get("filtered")]
+        rep_lvl = {"signals": len(rows), "filtered": sum(1 for r in state.get("shadow", []) if r["level"] == lvl and r.get("filtered"))}
+        for lab in ("1h", "24h", "7j"):
+            v = sorted(r["perf"][lab] for r in rows if lab in r["perf"])
+            if v:
+                rep_lvl[lab] = {"n": len(v), "avg": sum(v) / len(v), "median": v[len(v) // 2], "pos_pct": 100 * sum(x > 0 for x in v) / len(v)}
+        out[lvl] = rep_lvl
+    return out
+
+
+def cmd_shadow(args) -> None:
+    rep_ = shadow_report(load(STATE_PATH, {}))
+    for lvl, r in rep_.items():
+        line = f"{lvl} acteur(s) rentable(s) : {r['signals']} signaux retenus ({r['filtered']} filtrés)"
+        for lab in ("1h", "24h", "7j"):
+            if lab in r:
+                x = r[lab]
+                line += f" | {lab} : moy {x['avg']:+.1f} %, méd {x['median']:+.1f} %, {x['pos_pct']:.0f} % positifs (n={x['n']})"
+        print(line)
+
+
 def cmd_status(args) -> None:
     wallets = load(WALLETS_PATH, {})
     state = load(STATE_PATH, {"last_sig": {}, "buys": [], "alerts": []})
@@ -916,6 +1010,7 @@ def cmd_status(args) -> None:
         "tracked_wallets": len(wallets), "bots": sum(1 for r in wallets.values() if r.get("bot")),
         "recent_buys": sorted(state["buys"], key=lambda b: -b["ts"])[:50],
         "alerts": sorted(state["alerts"], key=lambda a: -a["ts"]),
+        "shadow": shadow_report(state),
     }
     if args.json:
         print(json.dumps(out, ensure_ascii=False))
@@ -937,12 +1032,13 @@ def main() -> None:
     pn.add_argument("--no-send", action="store_true", help="Test : n'envoie rien sur Telegram.")
     mo = sub.add_parser("monitor", help="Surveille leurs achats et alerte en cas de convergence (toutes les 15 min).")
     mo.add_argument("--no-send", action="store_true", help="Test : n'envoie rien sur Telegram.")
+    sub.add_parser("shadow", help="Compare la rentabilité des signaux fantômes 1 / 2 / 3 acteurs rentables.")
     st = sub.add_parser("status", help="État : smart wallets, derniers achats, alertes et leur suite.")
     st.add_argument("--json", action="store_true")
     args = p.parse_args()
     global DRY_RUN
     DRY_RUN = bool(getattr(args, "no_send", False))
-    {"discover": cmd_discover, "monitor": cmd_monitor, "pnl": cmd_pnl, "status": cmd_status}[args.cmd](args)
+    {"discover": cmd_discover, "monitor": cmd_monitor, "pnl": cmd_pnl, "status": cmd_status, "shadow": cmd_shadow}[args.cmd](args)
 
 
 if __name__ == "__main__":

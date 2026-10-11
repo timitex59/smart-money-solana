@@ -24,3 +24,9 @@ Un portefeuille repéré tôt sur **un seul** gagnant n'attend plus un 2e gagnan
 60 s, portefeuille de moins de 7 jours, plus de 140 jetons en 30 jours (robot). Les **réellement rentables**
 (mêmes critères que les smart wallets) sont promues et surveillées tant qu'elles le restent. Des portefeuilles entrés
 sur le même gagnant à la même seconde comptent comme un seul acteur dans les alertes.
+
+## Signaux fantômes 1 / 2 / 3 acteurs (comparaison, depuis le 11/10/2026)
+
+Sans aucun message, la surveillance note le prix d'un jeton dès que **1**, puis **2**, puis **3** acteurs réellement
+rentables l'achètent (mêmes filtres que les alertes : taille minimale, acheteurs pas déjà vendeurs, prix pas déjà
+envolé), puis sa performance à +1 h, +24 h et +7 j. `python smart_money.py shadow` compare les trois règles.

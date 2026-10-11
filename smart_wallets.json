@@ -9840,7 +9840,8 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "2jYdJ5zxxTSxqL3sGWiSeBajJxSxVY9QDE66fLL2gV4M": {
   "hits": {

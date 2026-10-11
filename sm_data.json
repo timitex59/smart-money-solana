@@ -144,7 +144,7 @@
   "DkTTY6sz5D3ygVVe9tmJ1sLdEk3LR8DL3q1XMi5SoX7T": "BorRtNNufwkMZmDbuCtUcUQFu9cpnyTc2E918TkbLL1bk2Ep4DKfuLGXLsN7AYLmxQaF187ycLaS2H4adYyvDCt",
   "ETWT2YrJh1BjHwZWsKyV4yRR9NMbQXyhFnESHK6wtk2f": "2cNT7SSGhC71WEyTbUHo7F3FTSUF45o7zd71ggEqcmd5tzQtGNrGouMzgimxTiR6Mikrtvj6VWTVwpz5BgxsQoMr",
   "F6pq4UnxJVGfNiFdW9YJG1QPppvNuCdFWTNqdWqpeiCZ": "3kLoGZEacSY9RNTMvS1iH4j82QiFhVmvF6kAb4M3KVyboKRPAL5MiYFm4pN3B2k2brWe43i2YTExMwPUuTLK5EJx",
-  "GN2CGUyYYLakXQmeiNtfvxcNDviKM9biqQMnxfEPzF4C": "2qCMX8XKrw1FHGGVKTEKrJ3cTyMFXKbNXxZ2iiLD1WJSmmZgjLPNiaZesbeh53y5huQgmazRzTf3epek8HDkiveU",
+  "GN2CGUyYYLakXQmeiNtfvxcNDviKM9biqQMnxfEPzF4C": "ENHSbq7brAV4hHk8FDENuZzRKH2KqKRwhv45JNW1x9ms4G6dfxYNYajmb9AvgS4BVSiZNrWLdHaFdgdxis3KZCY",
   "GoxPKZEmL9XGxeWkx8Yad2GaiHmBEX7t9Nebj6e6uYUq": "N47vdRJ5Ubu9enDKaKJKD3NSvrjfpsVcFxrUFXDVTgq7eenAgL2XRFFcwaRxLaCK2Yr6GCZenAnJXHssVYc8kKy",
   "HFX2dqzyQeRAdkjp41D4qThfsPPSyBDkVoruBr93zhY9": "WpVCTVTKg7m8QBBJAkGTaoMSpYP1cftz9TirJg3y83f5u9KhEtG4w1QF3Avi4ppEESFeb6hL4qvVu5H1TxNvGwv",
   "HodLXSGKApwv2ZYi1BTwo5DAwwxWV4zhMGa4Wz17URvd": "2A2CXzhtqrtzU9dwXWFmpdRVvVrf3pY3AZws9zrz9WA5zvPoo8fogvU84oQozVe6hf7eGtTuX9oY5sFZ6oNU2jU7",
@@ -7038,6 +7038,11 @@
    "wallet": "GN2CGUyYYLakXQmeiNtfvxcNDviKM9biqQMnxfEPzF4C",
    "mint": "nxPqZ4F7ux8Vph5NFu25rEP6Kx9Gr1U6Fmj36Rjpump",
    "ts": 1791754955
+  },
+  {
+   "wallet": "GN2CGUyYYLakXQmeiNtfvxcNDviKM9biqQMnxfEPzF4C",
+   "mint": "9g4Pib6AM3oVdP9YA7ZcssAXAuhoUzkjR8w27doYpump",
+   "ts": 1791755060
   }
  ],
  "alerts": [
@@ -7160,7 +7165,7 @@
  ],
  "credits": {
   "2026-10-10": 8523,
-  "2026-10-11": 12644
+  "2026-10-11": 12669
  },
  "ledger": {
   "5QY3MBvLEsP4xjE4SNYJYPuwvJgoBUrDnvSaZUNsNHZT": {
@@ -135012,12 +135017,12 @@
      "last": 1791658164
     },
     "9g4Pib6AM3oVdP9YA7ZcssAXAuhoUzkjR8w27doYpump": {
-     "spent": 28.778696985999975,
+     "spent": 28.978715985999976,
      "recv": 29.388961169999998,
-     "bought": 13091382.136639,
+     "bought": 13159298.963877,
      "sold": 12505422.026435,
      "first": 1791657753,
-     "last": 1791754203
+     "last": 1791755060
     },
     "4g2ToCkuFSBdW8GTJWMgnL7hGH2b2G2WkxgmS87Rpump": {
      "spent": 0.484546689,
@@ -135188,7 +135193,7 @@
      "last": 1791748195
     }
    },
-   "synced": 1791754955,
+   "synced": 1791755116,
    "backfilled": 1791691273,
    "partial": true
   },

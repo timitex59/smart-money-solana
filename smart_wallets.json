@@ -9909,7 +9909,8 @@
    "profitable": false,
    "at": "2026-10-11T04:01:13+00:00",
    "partial": true
-  }
+  },
+  "bot": true
  },
  "Cxo9BLrexmsg2QiPNKeda1ZdNyh6aNh3mGaZZfH3r5u8": {
   "hits": {

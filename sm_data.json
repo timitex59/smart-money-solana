@@ -78,7 +78,7 @@
   "4gG4V4iPrwfimbmG3ZzMLKJx8ursKxB8dkfW4PbiLjDa": "5qZ7YmTKtc4SqJbejLJ185KC6Jiu1JAGKCNDGUhAKnfgY1yFRgYsN8yvkq2GxHBhh1mBHcuSgeeDDzDoF2BD1Ugn",
   "4pLRtVwymQMY1NK14CcGLsKUtb8j9NhjPAZMpA6xH1Gz": "3HngsdqWGEe9Pfe6a6L72EuijgYbsB7gDMBmBrtVbLEiFWzjkLfKNa4dPNaJGHB4GTDjGMkxvQgomNgekUWhJ5qE",
   "66B95ED19CLsJtsVYPkTBQT3EZPPpEawCimCPruVucSX": "4Aicge178EfwrkZtuSyaeWLBxwHzwmkZmPaBexqh3oMa4wVvREDuTHXGxgLyuyRYpAoe8WwbbdUwQGqgRhPEtvqp",
-  "67Nwfi9hgwqhxGoovT2JGLU67uxfomLwQAWncjXXzU6U": "2MHCbWa4kwWQKZqnHwtVxDBC3dWPS9AEjBGWZweWUR1qVYd3BsscgAqrqW9yWcTHB7o1U53eYY7A9tHuxCrY55vA",
+  "67Nwfi9hgwqhxGoovT2JGLU67uxfomLwQAWncjXXzU6U": "25zmmL8DfAFMWCMYfoqozfwyNReQdjpqLQFTUZ8v1SgcW9F2iZPjtoj3JQx8ADm6xz8SM7GuQeMtVnigTRHAvLaG",
   "68So3f1Z3VVLQdK6F93mC2wNUJtXkszdrSYYso9xBMGN": "5MAnJcnwMyBWgbu8jDD8w4ec95adeB7G3Z1pHnu9gPbJ5W2MnCMw46dBG4sonNmp4iKadGteBcE7pSq16EBKjumK",
   "68xaw2jz26BwR6yRtQxdX1Xb7cyGKrdaNMzAy6WXWMK9": "4inxAeXVP4x7YTr5ozLKmst6NrDSNCNpKfX2wkHpTJsiCqi4XHQD6hvY4NWu5vdT9BwJakQMRaBV11mknq5tZiPH",
   "69pDoe9j5MVh4vwLtVeEuLH29MuLD869qFDhVKaunnQz": "4S1ETc7xtUwhy53qGwB48BpyhewySQ2mVnteaYQh6kLQsTNN8Nwn36GrXX9ud1EKqE8TJG6cYakkkSkJZMAfKvWp",
@@ -133,7 +133,7 @@
   "94SiWU5bW7BeKjsg5gg9fWZb5ANy56dt9k6z8oNPxUxF": "32k5vwCJ3uvmkBY7uS4QWRtogr2SDLpRC6LKZakZnijZDyiAQMzBgvhKm9bAtgcpjy6jWXG9rdkYgE1M1jmTmm2S",
   "9aMZN5sh6yYsvBTGQfnDiiZvFDMLnFRi8dbRsHWmZ7Z": "4ECe74UiWFXX7cZcdjqxT5ieisS9yLqsCx5qXkCJyAcCefgVk2uh8y26KPEK9pTHFac6FAtA8B3seoxUTzUKs9bb",
   "9wZKBHJhuo2ytDxAX6ZMRojcdKYXx5BAfC8JJwDLtwgU": "5dUNgRvCgPVdxtbQwjK332uyxfpn93b2wQ318n7JakBNRFRdRCKP2qGBJRQThUcjBcjnEu9yoZoQXKoz97nVetHL",
-  "ARVke5YDTZQBDcgQnshtUEWHAjWVJzn8hurgVSHE19o5": "3yZ9u8LQKS4ZA8oSWHnQC2uiQSZ5n4VEjgbPh5tvXTZTgwRXvk4YXZYBQjiN4CehooEZjXkpTZvTx7jCz2af4prT",
+  "ARVke5YDTZQBDcgQnshtUEWHAjWVJzn8hurgVSHE19o5": "29aT8Wd2JWyWBxKNLGnr57jpX1fhMktkRMkG3cfaMUjNhVTE6Ei398YquVjKtRoWFMPD5VPgLALEgYTpu1fjzKhi",
   "ArqcZqiMjnyFtVcHGXqiScQbkYKfUUahKvZbHmeqSNUY": "61Juat8ePkbMfxfCtHvZkRJjvgkwp1r5QabmkB9M1acLdxpZibCfWBn1YWjJerE9Y8ahxTmFtcWHPHt8wtedHxH9",
   "AtciBJYGairJoC7QRj7VfK3q7LbTgJbPvw776fpB2apD": "2R1LtvFJivKnj1QnMmQrizL9pTMiDxpUtd2DHmZPJNR9RAumxyWCroRjo64rdsHebqwYpoUUpGSDhw9vSsPTzMA",
   "Ay8Epicw7mpGAHefYd9V4187yEdwUvPbpLWtHzUCVSsF": "4RLNSTcu1dwDs8MvfRHaeF4nN8MKWuRKchkznLB5CdCgJdN5Xc7FE3QmYkoMvewSL96Rsov2eF9YyjeGvjShgqA8",
@@ -195,34 +195,9 @@
    "ts": 1791657918
   },
   {
-   "wallet": "5U3KFLj7f8Hrbik97CzN3gSRiQzR1rYh57KuDbJv6TKe",
-   "mint": "9UoRLP7YR6i38YLV4EPrX8qsAD4SH9bJvPmz1emipump",
-   "ts": 1791657180
-  },
-  {
-   "wallet": "66B95ED19CLsJtsVYPkTBQT3EZPPpEawCimCPruVucSX",
-   "mint": "xkGgfj2aYgcQKJT8zLWETYJWhVZ6dFBDC3Q3mp9pump",
-   "ts": 1791657233
-  },
-  {
-   "wallet": "66B95ED19CLsJtsVYPkTBQT3EZPPpEawCimCPruVucSX",
-   "mint": "xkGgfj2aYgcQKJT8zLWETYJWhVZ6dFBDC3Q3mp9pump",
-   "ts": 1791657234
-  },
-  {
    "wallet": "66B95ED19CLsJtsVYPkTBQT3EZPPpEawCimCPruVucSX",
    "mint": "5RhY4hfW3gfYMZNuUzUKDwMyHMVhpDf7uUUYPczUpump",
    "ts": 1791657918
-  },
-  {
-   "wallet": "67Nwfi9hgwqhxGoovT2JGLU67uxfomLwQAWncjXXzU6U",
-   "mint": "xkGgfj2aYgcQKJT8zLWETYJWhVZ6dFBDC3Q3mp9pump",
-   "ts": 1791657233
-  },
-  {
-   "wallet": "67Nwfi9hgwqhxGoovT2JGLU67uxfomLwQAWncjXXzU6U",
-   "mint": "xkGgfj2aYgcQKJT8zLWETYJWhVZ6dFBDC3Q3mp9pump",
-   "ts": 1791657234
   },
   {
    "wallet": "67Nwfi9hgwqhxGoovT2JGLU67uxfomLwQAWncjXXzU6U",
@@ -243,11 +218,6 @@
    "wallet": "AQyurhSeVuD3WWGWwigmKoVZW9gfcoAwLX34fyiifnMT",
    "mint": "N262mTRHaLZmsED3hEfDbJUfb4ghCmzEZjQp1ibpump",
    "ts": 1791657750
-  },
-  {
-   "wallet": "ByLZqXnz1rQgKGmMRj98ktM4zSVLZMFaRT1i3s1wZH1m",
-   "mint": "3kK8krb2NJoeA96pvvNgVWEQzR7uA4e6t1LQ1Ecgpump",
-   "ts": 1791657177
   },
   {
    "wallet": "ByLZqXnz1rQgKGmMRj98ktM4zSVLZMFaRT1i3s1wZH1m",
@@ -293,11 +263,6 @@
    "wallet": "L3Nd9vH5sikJEjzLYwisR7aMnLNKvboaEhq8KdHBHpt",
    "mint": "5RhY4hfW3gfYMZNuUzUKDwMyHMVhpDf7uUUYPczUpump",
    "ts": 1791657918
-  },
-  {
-   "wallet": "SF9TGdsfTPcA3ZVmPdPtYphgzRg6ZqUY4hnjPgjD1MW",
-   "mint": "9UoRLP7YR6i38YLV4EPrX8qsAD4SH9bJvPmz1emipump",
-   "ts": 1791657180
   },
   {
    "wallet": "5U3KFLj7f8Hrbik97CzN3gSRiQzR1rYh57KuDbJv6TKe",
@@ -7695,7 +7660,7 @@
  ],
  "credits": {
   "2026-10-10": 8523,
-  "2026-10-11": 10437
+  "2026-10-11": 10463
  },
  "ledger": {
   "5QY3MBvLEsP4xjE4SNYJYPuwvJgoBUrDnvSaZUNsNHZT": {
@@ -44913,7 +44878,7 @@
      "last": 1791743011
     }
    },
-   "synced": 1791743011,
+   "synced": 1791743698,
    "backfilled": 1791648175,
    "partial": true
   },
@@ -120991,14 +120956,14 @@
     },
     "BnhQ3ARhYJZwHNLnfJ7sA1moCFkstWaFsqni94TRpump": {
      "spent": 0.21352384000000002,
-     "recv": 0.189733224,
+     "recv": 0.288988955,
      "bought": 759381.9179110001,
-     "sold": 480454.877043,
+     "sold": 603670.9125730001,
      "first": 1791743214,
-     "last": 1791743362
+     "last": 1791743655
     }
    },
-   "synced": 1791743362,
+   "synced": 1791743655,
    "backfilled": 1791691273,
    "partial": true
   },

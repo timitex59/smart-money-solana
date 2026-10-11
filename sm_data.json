@@ -103,7 +103,7 @@
   "ByLZqXnz1rQgKGmMRj98ktM4zSVLZMFaRT1i3s1wZH1m": "2N25Y2emtCsfqihfWVUuohPjAAkoogVJcitwraHTRLVWdFWmBTW9ZTQqEM1HB63j1tCfZqRDUBcu6HG3oCQjZW1m",
   "C3A52EvMkxYKXuTREHufNNZ7r6WRKVRzzhssYpoV1Unr": "3eVq2miXnxxEVR5vMvprzDWXXXjEJA9cfiR78Ksj3XS19WLao3yW5zRKuCDqno6fAgJQTH2qWUBVBq2HnVioauok",
   "CuoCeEPgrm6zj8endAcRdWiccpPD1HygZDTNbCm8FHoX": "289RzBugUEecv55VoBYNeTemZr62z7oM7FskMgi8savN2y6kQCVjmzMGPBZZm8n3NyExbQe78fcANaoxUCf7nuBG",
-  "Cxo9BLrexmsg2QiPNKeda1ZdNyh6aNh3mGaZZfH3r5u8": "3CdjgyjR9rLZhWGwU8Ugc4UDjYaLKRJnHD8zW75wovxocWPysjhjM4wz8u4KYRpSbPU94nrwugpK4mRYU5A4sRRH",
+  "Cxo9BLrexmsg2QiPNKeda1ZdNyh6aNh3mGaZZfH3r5u8": "4h4K1VyafC9VmPh3TWkfV64mN95rUfomMymgiXqS4CCd9Ri9rL7v1o8f15VNc1znyMTRadWfxY1oYJofL49pTFpm",
   "DFFXHcmTgdBe5NPVXryoarPc4KYGNM3zWQ5K1PhPZccn": "4U28RMbyBXVTRw2xzccYwuihJpLr4FP1Ut2eR514sirw4XXkejGy2xgJw1nmCxELXuVJdrcjA2aSmy4oMcsYB6g6",
   "DSmkz9ztNRJGjqWMB3zmxR6bTg1y42AvSZciWj3f74Ut": "RWE8YBCBTKEHgEcjfUisoD6WZ6wdKANQoegsmw2d7Hx9C8KDVj2AoATyxqFvswcfiJNZB1u1SvgYBfL9ZSQy44Y",
   "EGpYE7LJ31X41W5Yi6ocDiVLYYu4qbam8pbNWpJo6cLL": "3UMk21tXzJZgNMbKkGzs61wfTasnNXgtUYNSFJY1UxY9DZipPNvcevDvxW47KoDxVZX9jYWCr6AxNBviCGhXw2di",
@@ -154,16 +154,6 @@
   "VJSDW6S74YXR4rRR9P4xwhMvLZJQMhrUb8XMFirUsy1": "x3a1XgCPy4PSBy6jmE1jWzGqLMcrND1gqKURozmDUdxn67d8hs6QDZLeW9m67Lmn1rGLxeX7stY8bcNotzuFTW5"
  },
  "buys": [
-  {
-   "wallet": "AQyurhSeVuD3WWGWwigmKoVZW9gfcoAwLX34fyiifnMT",
-   "mint": "9g4Pib6AM3oVdP9YA7ZcssAXAuhoUzkjR8w27doYpump",
-   "ts": 1791658837
-  },
-  {
-   "wallet": "G5aheRXkXSuMJTnvVqaMzXV15H27uGEJWYDuHwFyP4hk",
-   "mint": "7mptNgwB2PTekeU858C3e8k4b6TFCzUt7joFVyZJpump",
-   "ts": 1791658825
-  },
   {
    "wallet": "5U3KFLj7f8Hrbik97CzN3gSRiQzR1rYh57KuDbJv6TKe",
    "mint": "8DAkjpoFytMqAFY4m2vTEUo6sVT65ZtMZSgNFB1Ppump",
@@ -7625,7 +7615,7 @@
  ],
  "credits": {
   "2026-10-10": 8523,
-  "2026-10-11": 10736
+  "2026-10-11": 10761
  },
  "ledger": {
   "5QY3MBvLEsP4xjE4SNYJYPuwvJgoBUrDnvSaZUNsNHZT": {
@@ -77470,7 +77460,7 @@
      "last": 1791730414
     }
    },
-   "synced": 1791744900,
+   "synced": 1791745245,
    "backfilled": 1791648175,
    "partial": false
   },

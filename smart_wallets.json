@@ -1763,7 +1763,8 @@
    "profitable": false,
    "at": "2026-10-11T04:01:13+00:00",
    "partial": true
-  }
+  },
+  "bot": true
  },
  "4Ejk42VUBnmhB2URHwDXPJnVnqgTWDesGukF8pwMu8ss": {
   "hits": {
@@ -6595,7 +6596,8 @@
    "profitable": false,
    "at": "2026-10-11T04:01:13+00:00",
    "partial": true
-  }
+  },
+  "bot": true
  },
  "8N4CBW2aX5jzpZuhsvzB5AXwLmfBJZEU8mYnC84KWrxF": {
   "hits": {
@@ -9706,7 +9708,8 @@
    "profitable": false,
    "at": "2026-10-11T04:01:13+00:00",
    "partial": true
-  }
+  },
+  "bot": true
  },
  "Ac6KxmjfKG4kyJzCLxSTcdM311g4adcNsiU8D8dTi5za": {
   "hits": {

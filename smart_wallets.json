@@ -17470,7 +17470,8 @@
    "profitable": false,
    "at": "2026-10-11T04:01:13+00:00",
    "partial": true
-  }
+  },
+  "bot": true
  },
  "Fkia7Mfh3ZAcKDh1KYgNNAi3EZFhHtxV8khewQ6wMmip": {
   "hits": {
@@ -30796,7 +30797,8 @@
    "profitable": false,
    "at": "2026-10-11T04:01:13+00:00",
    "partial": true
-  }
+  },
+  "bot": true
  },
  "CXGBL83kc6DFkgfDx5v6fhxBVtViHA65zB6nn7MvGANe": {
   "hits": {

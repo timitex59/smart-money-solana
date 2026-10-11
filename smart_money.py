@@ -60,6 +60,14 @@ CLUSTER_TOLERANCE_S = 3           # mêmes jetons achetés avec les mêmes déla
 SMART_WINDOW_DAYS = 14
 SMART_MIN_HITS = 2                # entré tôt sur au moins 2 gagnants différents
 SMART_MAX_WALLETS = 80            # budget de crédits Helius : 80 portefeuilles x 96 passages/jour
+# Candidates repérées sur UN seul gagnant : leur rentabilité réelle est mesurée (VET_PER_RUN par découverte, ~100 crédits
+# chacune) et celles qui sont réellement rentables deviennent smart wallets sans attendre un 2e gagnant. Écartées
+# d'office : entrée avant VET_MIN_OFFSET_S (robots qui achètent dès l'ouverture), portefeuille de moins de
+# VET_MIN_AGE_DAYS jours (portefeuille jetable), plus de VET_MAX_TOKENS jetons en 30 jours (robot).
+VET_PER_RUN = 60                  # ~70 crédits chacune : ~4 000/jour, dans la part journalière du budget
+VET_MIN_OFFSET_S = 60
+VET_MIN_AGE_DAYS = 7
+VET_MAX_TOKENS = 140
 # Alertes
 CONVERGENCE_MIN = 3
 CONVERGENCE_WINDOW_MIN = 60
@@ -588,10 +596,12 @@ def cmd_discover(args) -> None:
     for owner in list(wallets):
         rec = wallets[owner]
         rec["hits"] = {m: x for m, x in rec["hits"].items() if datetime.fromisoformat(x["at"]).timestamp() >= cutoff}
-        if not rec["hits"] and not rec.get("bot"):
+        keep = rec.get("promoted") and rec.get("pnl", {}).get("profitable")
+        if not rec["hits"] and not rec.get("bot") and not keep:
             del wallets[owner]
     # Un smart wallet doit être un portefeuille personnel (compte du System Program), pas un compte de programme.
-    unchecked = [o for o, r in wallets.items() if len(r["hits"]) >= SMART_MIN_HITS and "personal" not in r]
+    unchecked = [o for o, r in wallets.items() if "personal" not in r and (len(r["hits"]) >= SMART_MIN_HITS or (
+        len(r["hits"]) == 1 and "vetted" not in r and next(iter(r["hits"].values()))["offset_s"] >= VET_MIN_OFFSET_S))]
     for i in range(0, len(unchecked), 100):
         chunk = unchecked[i:i + 100]
         accs = (h.call("getMultipleAccounts", [chunk, {"encoding": "base64"}]) or {}).get("value") or []
@@ -601,14 +611,72 @@ def cmd_discover(args) -> None:
     st = load(STATE_PATH, {"last_sig": {}, "buys": [], "alerts": []})
     add_credits(st, t, h.credits)
     save(STATE_PATH, st)
-    smart = smart_list(wallets)
     st = load(STATE_PATH, {"last_sig": {}, "buys": [], "alerts": []})
+    vet_candidates(h, wallets, st, t)
+    save(STATE_PATH, st)
+    save(WALLETS_PATH, wallets)
+    smart = smart_list(wallets)
     refresh_pnl(h, wallets, st, t, PNL_BACKFILL_PER_RUN)
     save(STATE_PATH, st)
     save(WALLETS_PATH, wallets)
     send_top(wallets, st, t)
     print(f"Acteurs distincts parmi les smart wallets : {len(set(actor_map(wallets, smart).values()))}")
     print(f"Portefeuilles suivis : {len(wallets)} · smart wallets (>= {SMART_MIN_HITS} gagnants) : {len(smart)} · crédits Helius {h.credits}")
+
+
+def vet_candidates(h: "Helius", wallets: dict, state: dict, t: int) -> None:
+    """Mesure la rentabilité réelle des candidates à 1 gagnant (les plus récentes d'abord) et promeut les rentables."""
+    usd = sol_usd()
+    ledgers = state.setdefault("ledger", {})
+    todo = [o for o, r in wallets.items() if len(r["hits"]) == 1 and not r.get("bot") and "vetted" not in r
+            and r.get("personal", True) and next(iter(r["hits"].values()))["offset_s"] >= VET_MIN_OFFSET_S]
+    # Ordre : un jeton après l'autre (les plus récents d'abord) pour couvrir tous les gagnants ; dans chaque jeton,
+    # d'abord les entrées entre 1 et 15 min (zone des meilleurs profils trouvés en test, la plus tardive d'abord car les
+    # robots se concentrent juste après l'ouverture), puis les entrées plus tardives.
+    groups = {}
+    for o in todo:
+        m, hit = next(iter(wallets[o]["hits"].items()))
+        off = hit["offset_s"]
+        groups.setdefault(m, []).append(((off > 900, -off if off <= 900 else off), hit["at"], o))
+    queues = sorted((sorted(g) for g in groups.values()), key=lambda g: max(x[1] for x in g), reverse=True)
+    todo = []
+    while any(queues):
+        for q in queues:
+            if q:
+                todo.append(q.pop(0)[2])
+    promoted = vetted = 0
+    for o in todo[:VET_PER_RUN]:
+        if not budget_ok(state, t):
+            print("  budget Helius du jour atteint : vérification des candidates reportée")
+            break
+        before = h.credits
+        rec = wallets[o]
+        try:
+            oldest = (h.call("getTransactionsForAddress", [o, {"sortOrder": "asc", "limit": 1, "transactionDetails": "signatures"}]) or {}).get("data") or []
+            age_d = (t - oldest[0]["blockTime"]) / 86400 if oldest and oldest[0].get("blockTime") else 0
+            if age_d < VET_MIN_AGE_DAYS:
+                rec["vetted"] = {"at": iso(t), "result": f"portefeuille récent ({age_d:.1f} j)"}
+                continue
+            led = backfill(h, o, usd, t)
+            st = wallet_stats(led, prices_sol(list(led["tokens"]), usd))
+        except RuntimeError as exc:
+            print(f"  candidate {o[:6]}… illisible : {str(exc)[:80]}")
+            continue
+        finally:
+            add_credits(state, t, h.credits - before)
+        vetted += 1
+        if st["tokens"] > VET_MAX_TOKENS:
+            rec["bot"] = True
+            rec["vetted"] = {"at": iso(t), "result": f"robot ({st['tokens']} jetons en {PNL_DAYS} j)"}
+        elif st["profitable"]:
+            rec["promoted"] = iso(t)
+            rec["vetted"] = {"at": iso(t), "result": "rentable : promue smart wallet"}
+            rec["pnl"] = {**st, "at": iso(t), "partial": led.get("partial", False)}
+            ledgers[o] = led
+            promoted += 1
+        else:
+            rec["vetted"] = {"at": iso(t), "result": f"non rentable ({st['pnl_sol']:+.2f} SOL)"}
+    print(f"Candidates à 1 gagnant : {vetted} vérifiées, {promoted} promues smart wallets ({len(todo)} en attente)")
 
 
 def actor_map(wallets: dict, smart: list) -> dict:
@@ -619,7 +687,8 @@ def actor_map(wallets: dict, smart: list) -> dict:
     def same(a, b):
         ha, hb = wallets[a]["hits"], wallets[b]["hits"]
         common = set(ha) & set(hb)
-        return len(common) >= 2 and len(common) >= 0.8 * min(len(ha), len(hb)) and all(
+        need = 1 if min(len(ha), len(hb)) == 1 else 2
+        return len(common) >= need and len(common) >= 0.8 * min(len(ha), len(hb)) and all(
             abs(ha[m]["offset_s"] - hb[m]["offset_s"]) <= CLUSTER_TOLERANCE_S for m in common)
     for i, a in enumerate(smart):
         for b in smart[:i]:
@@ -632,8 +701,12 @@ def actor_map(wallets: dict, smart: list) -> dict:
 
 
 def smart_list(wallets: dict) -> list:
-    ok = [(o, r) for o, r in wallets.items() if len(r["hits"]) >= SMART_MIN_HITS and not r.get("bot") and r.get("personal", True)]
-    ok.sort(key=lambda x: (-len(x[1]["hits"]), x[0]))
+    """Smart wallets surveillés : >= SMART_MIN_HITS gagnants, ou candidate promue (rentable) tant qu'elle le reste.
+    Les réellement rentables passent en premier dans la limite de SMART_MAX_WALLETS."""
+    ok = [(o, r) for o, r in wallets.items()
+          if (len(r["hits"]) >= SMART_MIN_HITS or (r.get("promoted") and r.get("pnl", {}).get("profitable")))
+          and not r.get("bot") and r.get("personal", True)]
+    ok.sort(key=lambda x: (not x[1].get("pnl", {}).get("profitable"), -len(x[1]["hits"]), x[0]))
     return [o for o, _ in ok[:SMART_MAX_WALLETS]]
 
 

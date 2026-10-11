@@ -16,3 +16,11 @@ Les memecoins comportent un risque de perte totale ; rien ici n'est un conseil d
 Données gratuites : [Helius](https://www.helius.dev) (offre gratuite), GeckoTerminal, DexScreener, RugCheck.
 Exécution : GitHub Actions (`workflow_dispatch`, déclenché par cron-job.org). Secrets : `HELIUS_API_KEY`,
 `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`. Pause : variable de dépôt `SMART_MONEY_PAUSED = true`.
+
+## Candidates à un seul gagnant (depuis le 11/10/2026)
+
+Un portefeuille repéré tôt sur **un seul** gagnant n'attend plus un 2e gagnant : à chaque découverte, jusqu'à
+60 candidates (un jeton après l'autre, entrées entre 1 et 15 min d'abord) sont vérifiées. Écartées : entrée avant
+60 s, portefeuille de moins de 7 jours, plus de 140 jetons en 30 jours (robot). Les **réellement rentables**
+(mêmes critères que les smart wallets) sont promues et surveillées tant qu'elles le restent. Des portefeuilles entrés
+sur le même gagnant à la même seconde comptent comme un seul acteur dans les alertes.

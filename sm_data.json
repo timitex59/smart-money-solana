@@ -126,7 +126,7 @@
   "kEFiAX3jo5NmemysQov342TZ9mGh6yp92GDRjhA8XDf": "2B6r7VvmKyNPiko2gpXHumkhtaHz7tfgExmtRXP6Q1zBYTSKdE1yE5qQYw4qUpj9WjTwm48czKyf1EQMWC4RseiN",
   "47du2vFgZhzXR2nk4xXtuKqE8dAWXXSWsNTHNx54jjWK": "21tqHAVNQ5jM25M2JeWjUKAvXPcDCSofo2jGX4UaX3dk72YAAz9hXzmLqsdCGq7SNmoS65CBiRgb64g3gsSYZtFT",
   "4CcYMohSa8YKJfHn2UhyR2fVXyt8zoU6xAK63mZ3Lc7y": "4MbYgwCSUFkCjvnZMmWQscCYKiac5zdpZAzevoHFHPdsf5kUoWoQMuF4JXquh1cydYmDzUUDAjChTVhcCD8JxEja",
-  "6zKinWWP2odEZDdobVsviRsxkasSN2wbgXDJNRQWLDmL": "qys78kG4vSWqA4ng54EJAStU8Xu46TqNWhJHrThmnG2eV3mHZHR7F4vUKC4FwiMCfXMj73ccaq2wLxrCFuEquNa",
+  "6zKinWWP2odEZDdobVsviRsxkasSN2wbgXDJNRQWLDmL": "5RvnfZqamzwjgPyyo7ACE4vhDPa1zhGw449fzMDC4WK1MMu8CpKUL1hAKJWkudRyKyDnJRRJqx2EomACyJDx7pdg",
   "8MaVa9kdt3NW4Q5HyNAm1X5LbR8PQRVDc1W8NMVK88D5": "x3a1XgCPy4PSBy6jmE1jWzGqLMcrND1gqKURozmDUdxn67d8hs6QDZLeW9m67Lmn1rGLxeX7stY8bcNotzuFTW5",
   "8uM5QpzRvHqb271P1xCXwmh57jwPtSMNzWKY9RptgpEh": "3MRTWcppUyEtwm2LhGiRAFJWdzoVpoJB35yvQKRxTXShrubsh1cYpchdDgrPYgtGcKvjia2XHKDKiVEkjZB41omn",
   "93nFtbz5X4GCzDXudLq2ZChSg6tKmqDu6PVmYeJzD5mf": "5v6kccDeKSFvsX9Gx6B7QFr7vQXeHzJfpdRFtPsBDPVdzS4rA5BFdkXuduNMN9GPvbbq3McbmTLEn8WQStfJ4Vt4",
@@ -218,16 +218,6 @@
    "wallet": "EGpYE7LJ31X41W5Yi6ocDiVLYYu4qbam8pbNWpJo6cLL",
    "mint": "LVnE4QQz2MuYh7CNMnaDmrvAtrs5hGVhakPzE17pump",
    "ts": 1791653698
-  },
-  {
-   "wallet": "FEDXXgmWCakJZnUKPpfqrf5rseudrTHr23mLe4Hsre1s",
-   "mint": "Gyk9Z93Ri2JUjqES9HTpc7pxCJTLD7vhBhEjBhyApump",
-   "ts": 1791653463
-  },
-  {
-   "wallet": "FEDXXgmWCakJZnUKPpfqrf5rseudrTHr23mLe4Hsre1s",
-   "mint": "FDJqEqqS68jummd8XGtBqzJTu2Pgc3pGQjozrpUzpump",
-   "ts": 1791653491
   },
   {
    "wallet": "FEDXXgmWCakJZnUKPpfqrf5rseudrTHr23mLe4Hsre1s",
@@ -8015,7 +8005,7 @@
  ],
  "credits": {
   "2026-10-10": 8523,
-  "2026-10-11": 9694
+  "2026-10-11": 9719
  },
  "ledger": {
   "5QY3MBvLEsP4xjE4SNYJYPuwvJgoBUrDnvSaZUNsNHZT": {
@@ -111070,7 +111060,7 @@
      "last": 1791731350
     }
    },
-   "synced": 1791731350,
+   "synced": 1791739863,
    "backfilled": 1791691273,
    "partial": true
   },

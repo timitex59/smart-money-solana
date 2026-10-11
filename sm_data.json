@@ -77,7 +77,7 @@
   "4bHUoZY36hmtW1FbJ1XJ5umWmFWXxx9voAe94M8PWNpL": "2ukEDKeqJbwAR7ya6ZFrmexwSbhCECfxqF5HCyRdYGFVQ6FpZkDYiiSX1zYwUjiR6oX7QGAfAzVFyhjTC9iqyZM",
   "4gG4V4iPrwfimbmG3ZzMLKJx8ursKxB8dkfW4PbiLjDa": "5qZ7YmTKtc4SqJbejLJ185KC6Jiu1JAGKCNDGUhAKnfgY1yFRgYsN8yvkq2GxHBhh1mBHcuSgeeDDzDoF2BD1Ugn",
   "4pLRtVwymQMY1NK14CcGLsKUtb8j9NhjPAZMpA6xH1Gz": "3HngsdqWGEe9Pfe6a6L72EuijgYbsB7gDMBmBrtVbLEiFWzjkLfKNa4dPNaJGHB4GTDjGMkxvQgomNgekUWhJ5qE",
-  "66B95ED19CLsJtsVYPkTBQT3EZPPpEawCimCPruVucSX": "3PjuG1q2pNSP9sDy6ooJ1SfCSg31qJdch2fTM6BR7KirKu1x28S2tM5xeNXS6XeUa685FL9xGFP2ytnVMxAWX7wF",
+  "66B95ED19CLsJtsVYPkTBQT3EZPPpEawCimCPruVucSX": "27jRhxogWK7Vu1WRJoozF5cxS2emaavDcCJfEFErDMDEy6TQDKwZbfKkrCaNTavcZB2bK4xQ4L8h3kA9TTt5h5tF",
   "67Nwfi9hgwqhxGoovT2JGLU67uxfomLwQAWncjXXzU6U": "4qCSjJ9xxZ4VWvYbJXH1nu93NJG1zv2v6xD8Lnmb6UqvTYXBLkeW4Mdm2TeFMqXy5nLaU6KmHB7kukvuC5xoc8yV",
   "68So3f1Z3VVLQdK6F93mC2wNUJtXkszdrSYYso9xBMGN": "5MAnJcnwMyBWgbu8jDD8w4ec95adeB7G3Z1pHnu9gPbJ5W2MnCMw46dBG4sonNmp4iKadGteBcE7pSq16EBKjumK",
   "68xaw2jz26BwR6yRtQxdX1Xb7cyGKrdaNMzAy6WXWMK9": "4inxAeXVP4x7YTr5ozLKmst6NrDSNCNpKfX2wkHpTJsiCqi4XHQD6hvY4NWu5vdT9BwJakQMRaBV11mknq5tZiPH",
@@ -103,7 +103,7 @@
   "ByLZqXnz1rQgKGmMRj98ktM4zSVLZMFaRT1i3s1wZH1m": "2N25Y2emtCsfqihfWVUuohPjAAkoogVJcitwraHTRLVWdFWmBTW9ZTQqEM1HB63j1tCfZqRDUBcu6HG3oCQjZW1m",
   "C3A52EvMkxYKXuTREHufNNZ7r6WRKVRzzhssYpoV1Unr": "3eVq2miXnxxEVR5vMvprzDWXXXjEJA9cfiR78Ksj3XS19WLao3yW5zRKuCDqno6fAgJQTH2qWUBVBq2HnVioauok",
   "CuoCeEPgrm6zj8endAcRdWiccpPD1HygZDTNbCm8FHoX": "289RzBugUEecv55VoBYNeTemZr62z7oM7FskMgi8savN2y6kQCVjmzMGPBZZm8n3NyExbQe78fcANaoxUCf7nuBG",
-  "Cxo9BLrexmsg2QiPNKeda1ZdNyh6aNh3mGaZZfH3r5u8": "rDTLD6ghaqasGsbARyFkCVXaNAKbcraDvxdZabziEBrXCNZztHuGij9yBefBkgHWPmo75Y8BhkEhoPh1AFBMZSY",
+  "Cxo9BLrexmsg2QiPNKeda1ZdNyh6aNh3mGaZZfH3r5u8": "4FHYsrV8eeV8Cd7aUvqmp5K61W71uyKXsNuztDw69h9W9Xmy92tvfUtTbStj93jPdhUTQTSjVXg2zdtFzVWb2C3d",
   "DFFXHcmTgdBe5NPVXryoarPc4KYGNM3zWQ5K1PhPZccn": "4U28RMbyBXVTRw2xzccYwuihJpLr4FP1Ut2eR514sirw4XXkejGy2xgJw1nmCxELXuVJdrcjA2aSmy4oMcsYB6g6",
   "DSmkz9ztNRJGjqWMB3zmxR6bTg1y42AvSZciWj3f74Ut": "RWE8YBCBTKEHgEcjfUisoD6WZ6wdKANQoegsmw2d7Hx9C8KDVj2AoATyxqFvswcfiJNZB1u1SvgYBfL9ZSQy44Y",
   "EGpYE7LJ31X41W5Yi6ocDiVLYYu4qbam8pbNWpJo6cLL": "3D2kotqf3yH2uZUDBBThPxYVf76RgS8a8BpPBztwkodgoE1CGPbMwvYcCMDinffufNRtNd9ip8MNUvMHe6JSLYtx",
@@ -156,11 +156,6 @@
  "buys": [
   {
    "wallet": "4gG4V4iPrwfimbmG3ZzMLKJx8ursKxB8dkfW4PbiLjDa",
-   "mint": "fggPMbAX1E1hDfD8W9gVRM4JNWb2Dkp9pVJdo4hpump",
-   "ts": 1791666452
-  },
-  {
-   "wallet": "4gG4V4iPrwfimbmG3ZzMLKJx8ursKxB8dkfW4PbiLjDa",
    "mint": "4qZrRY5Vd2Yxr8muFKESJuVx3UCGMY6MvgRdPh3ypump",
    "ts": 1791666648
   },
@@ -168,21 +163,6 @@
    "wallet": "4gG4V4iPrwfimbmG3ZzMLKJx8ursKxB8dkfW4PbiLjDa",
    "mint": "acp4cQAacXNxfRwbKJWD51DakvXJrxbQoUkmAFehREV",
    "ts": 1791666793
-  },
-  {
-   "wallet": "5gfshs1yDAHfJYKaHinExHY12yNub6KUs5YvLMs6chL6",
-   "mint": "2KZ5uMxy5d23jQ1VDdnzZWJb1aYK9gGPL3iaYGLppump",
-   "ts": 1791666361
-  },
-  {
-   "wallet": "5gfshs1yDAHfJYKaHinExHY12yNub6KUs5YvLMs6chL6",
-   "mint": "2KZ5uMxy5d23jQ1VDdnzZWJb1aYK9gGPL3iaYGLppump",
-   "ts": 1791666366
-  },
-  {
-   "wallet": "5gfshs1yDAHfJYKaHinExHY12yNub6KUs5YvLMs6chL6",
-   "mint": "E8Pnze3VWG4aY9oHMeHjT8nKb1RnBmZgYqCisUaQ6NsS",
-   "ts": 1791666384
   },
   {
    "wallet": "5gfshs1yDAHfJYKaHinExHY12yNub6KUs5YvLMs6chL6",
@@ -208,16 +188,6 @@
    "wallet": "ByLZqXnz1rQgKGmMRj98ktM4zSVLZMFaRT1i3s1wZH1m",
    "mint": "JCfKCvXira7muAe4Y21PMDAJGQyvTRd7W42NQVYFpump",
    "ts": 1791666744
-  },
-  {
-   "wallet": "FEDXXgmWCakJZnUKPpfqrf5rseudrTHr23mLe4Hsre1s",
-   "mint": "3MwJb5BFDx4CJfFuRn7a9iXm38XztEK8xyaDgPFcpump",
-   "ts": 1791666351
-  },
-  {
-   "wallet": "FEDXXgmWCakJZnUKPpfqrf5rseudrTHr23mLe4Hsre1s",
-   "mint": "3MwJb5BFDx4CJfFuRn7a9iXm38XztEK8xyaDgPFcpump",
-   "ts": 1791666354
   },
   {
    "wallet": "FEDXXgmWCakJZnUKPpfqrf5rseudrTHr23mLe4Hsre1s",
@@ -7190,7 +7160,7 @@
  ],
  "credits": {
   "2026-10-10": 8523,
-  "2026-10-11": 12179
+  "2026-10-11": 12206
  },
  "ledger": {
   "5QY3MBvLEsP4xjE4SNYJYPuwvJgoBUrDnvSaZUNsNHZT": {
@@ -43025,7 +42995,7 @@
      "last": 1791750747
     }
    },
-   "synced": 1791752623,
+   "synced": 1791752839,
    "backfilled": 1791648175,
    "partial": true
   },
@@ -77171,7 +77141,7 @@
      "last": 1791730414
     }
    },
-   "synced": 1791752370,
+   "synced": 1791752680,
    "backfilled": 1791648175,
    "partial": false
   },

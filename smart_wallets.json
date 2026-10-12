@@ -42751,7 +42751,8 @@
    }
   },
   "first_seen": "2026-10-12T04:01:14+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "7fdyE3wYyWcjhuLET5jX4TJWzsYum3AC32gakS1bTTSh": {
   "hits": {

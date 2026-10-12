@@ -52,7 +52,7 @@
   "FdGXbxdsRJd7p6iJMHD5Ap1Mqm2SqXRNtPs4qAhrrh1r": "5fkRArxCyUFXdAmJJoUrykKZyo9hKgBmmehXgjUMoWcxuyLrPaCQLH3y5ZFRneNLzqSML8AEXmKEzANkKwgzwZjc",
   "G5aheRXkXSuMJTnvVqaMzXV15H27uGEJWYDuHwFyP4hk": "3m247srgWmvDpD8skaeGY9TmamKVaMCr7LzHLD1LbFBg5F8WRUMcv3bHUvXcZPWwsZKxu7vBze9NRyRiQuqV6gxA",
   "GcjzWtULkoHfQr5NwB2uhRXNz5XqrYvGS2oNUr7veCtb": "2q348ZjVFLysjnNNreGUiNi1V8Kk4xzXBi6X3oktvLoSVmYWnXrAGZs6Wwmdp9bysZdUGxoWyUSK5P6ggUAbEXHk",
-  "H1kCAspoL1YCSacto4Ha6qDo1Vw9xz2GbSZvAcrcRHLr": "3DbtiDqsenrima8gqT2tXrCtJP8pqAwE8HGyWgkBhNH5Wt6JBcpkzPhZQHa1ZWAdKvvuVXnyn89CmGPCDpokTAVm",
+  "H1kCAspoL1YCSacto4Ha6qDo1Vw9xz2GbSZvAcrcRHLr": "2nMWaLkxC3GSpHJsirhKZskkJqmFDsQgQWFoan9bmmcX4msNUUEZoPnG1iAic3wBHAYJgZFVKMv1byXWw3LNNEhk",
   "NULLioEUhd89Jo5Acm9sX88bwjNjrsAVy6KWkXD7qZh": "4PS6NU7HqCVv1CAzDdfYyaFWK3umdpM9afY6U9HbxTYPXgPx71rFziHpFwpRsDAoeGwtJ5NmeGapUtZxwTe2mdBj",
   "PUtsAgCQ4rdfVa3i4GFD3vhBDWsJJ5zditdtYRkx5mf": "5dHadiS5teRNKDuuFcQTZvYD7YYdrfHTAxa1iQJXqKYcb3Z8AA9EHFs8SCqxdLqsdpdGBdCoL9osHZYsvPT1KA8R",
   "SF9TGdsfTPcA3ZVmPdPtYphgzRg6ZqUY4hnjPgjD1MW": "4zywazLDxhndaBzUmva5SzDD4YBCS2FZ4WkNmoKKaoJ5maXNTdmCNYvTMRZJAwmcZn3vx5QnnHPVuZ58qXfqXEUf",
@@ -77,7 +77,7 @@
   "4bHUoZY36hmtW1FbJ1XJ5umWmFWXxx9voAe94M8PWNpL": "2ukEDKeqJbwAR7ya6ZFrmexwSbhCECfxqF5HCyRdYGFVQ6FpZkDYiiSX1zYwUjiR6oX7QGAfAzVFyhjTC9iqyZM",
   "4gG4V4iPrwfimbmG3ZzMLKJx8ursKxB8dkfW4PbiLjDa": "5qZ7YmTKtc4SqJbejLJ185KC6Jiu1JAGKCNDGUhAKnfgY1yFRgYsN8yvkq2GxHBhh1mBHcuSgeeDDzDoF2BD1Ugn",
   "4pLRtVwymQMY1NK14CcGLsKUtb8j9NhjPAZMpA6xH1Gz": "3HngsdqWGEe9Pfe6a6L72EuijgYbsB7gDMBmBrtVbLEiFWzjkLfKNa4dPNaJGHB4GTDjGMkxvQgomNgekUWhJ5qE",
-  "66B95ED19CLsJtsVYPkTBQT3EZPPpEawCimCPruVucSX": "4Nq8H7dasR2Qj5htRxdHr4z5H4yEDtwmioLrnqmrBQoeG3zsVQaaHQEnKTNjtqLNhiuH8cxjZoYr9816AZrmbNXR",
+  "66B95ED19CLsJtsVYPkTBQT3EZPPpEawCimCPruVucSX": "42GvkLWrzR3ry4UmwCkLKRdj6LC7kth7sCwiKqGARvbTgb5Msm9xATHstgiNVrWj4BkzzJWkeBYnFC6GkcgdLWvU",
   "67Nwfi9hgwqhxGoovT2JGLU67uxfomLwQAWncjXXzU6U": "55Edus1q1z7cCDU6g6Gfzvc7P96S16e5VC1Fa44MVTsjivV7XFbgL71HBEjGfyQJqzNg6VQA9egyQBx2zrrQDtd4",
   "68So3f1Z3VVLQdK6F93mC2wNUJtXkszdrSYYso9xBMGN": "5MAnJcnwMyBWgbu8jDD8w4ec95adeB7G3Z1pHnu9gPbJ5W2MnCMw46dBG4sonNmp4iKadGteBcE7pSq16EBKjumK",
   "68xaw2jz26BwR6yRtQxdX1Xb7cyGKrdaNMzAy6WXWMK9": "4inxAeXVP4x7YTr5ozLKmst6NrDSNCNpKfX2wkHpTJsiCqi4XHQD6hvY4NWu5vdT9BwJakQMRaBV11mknq5tZiPH",
@@ -7536,7 +7536,7 @@
  "credits": {
   "2026-10-10": 8523,
   "2026-10-11": 13167,
-  "2026-10-12": 533
+  "2026-10-12": 556
  },
  "ledger": {
   "5QY3MBvLEsP4xjE4SNYJYPuwvJgoBUrDnvSaZUNsNHZT": {
@@ -43555,7 +43555,7 @@
      "last": 1791772913
     }
    },
-   "synced": 1791772913,
+   "synced": 1791773207,
    "backfilled": 1791648175,
    "partial": true
   },
@@ -92036,7 +92036,7 @@
      "last": 1791709087
     }
    },
-   "synced": 1791754310,
+   "synced": 1791773282,
    "backfilled": 1791648175,
    "partial": false
   },
@@ -138711,7 +138711,9 @@
    "price": 8.61e-06,
    "mcap": 8610.63,
    "filtered": "micro-jeton",
-   "perf": {}
+   "perf": {
+    "1h": -46.68989547038328
+   }
   },
   {
    "mint": "E8Q5QYbcNvqagCSP1KBbsdemw49qAqKgqKdjhU44pump",

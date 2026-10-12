@@ -191,7 +191,8 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "DDgWsh9ABSdRozVMqNdLNctb9MRm9rnJVGs8Z5sdTNSr": {
   "hits": {
@@ -11636,7 +11637,8 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "9rHMSjjZCQfxfQwg58zwpBdYfEKFCGPi69sgWb4au1mV": {
   "hits": {
@@ -18531,7 +18533,8 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "8oEdDewyhPhVNnizQFFfCUSzP27qVpHX4WXqFJKdZrYc": {
   "hits": {

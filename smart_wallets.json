@@ -22103,7 +22103,8 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "DU79t3yoStzeN9StbcXViGFB3xj44yDCyCtddP2ya2wd": {
   "hits": {
@@ -30550,7 +30551,8 @@
    }
   },
   "first_seen": "2026-10-11T04:01:13+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "FR6yYc1go6CWQtZARyi69rTz1EcvC1hmBqvVRm72rCRr": {
   "hits": {

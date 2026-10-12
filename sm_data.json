@@ -32,7 +32,7 @@
   "5gfshs1yDAHfJYKaHinExHY12yNub6KUs5YvLMs6chL6": "efH9eAa2JjGX2k9tJEDRiCGj3prsJjxP87mzET3SUWuKnyXUeNJLvcVs3LCf9m17HshBgVqwdpbZxZ8r6Lqc9DK",
   "5q2VDzWUWQioCuVgxhA7HuCLpZ45VrDyM75JLk6anjYG": "4ALYpRSqzexThoNivzwGM7NFX5228nx7RYpoqdd8Ryueg9qp6dX1VNej1dnS9RhJPPpaFioD5DeReJrbbi1XALpo",
   "64BKS2Wqe4WWd7xa52FBXnDqf82mXxNm96WWbvFjsQnW": "XokGW9xubjJGUtHxbkWC8y8P6DHKYrHW1ghAGq3XGmBpMUwMg8A4pREtypkJdaJqvaPGkMFLw3JJmj6ViRDsAqL",
-  "6hkd4VQ7ZeTXBBtwcktWD5kTBj9ahZspLcew5tpMPrH9": "57Lr1MSpGGFndUpK7kTJXc2QADf1fCGDCWtzhYiQNWqwYvjUvS6qNRdsEp5b4pv4kKnJUm7giRJAM4nmZt5sFUHJ",
+  "6hkd4VQ7ZeTXBBtwcktWD5kTBj9ahZspLcew5tpMPrH9": "YNenKptoUXAjZKUdHSGf46XyANX63GQRZN6GcwaP1tvCHUaV7DNELqvZvuieKyQnR2V3XYbZX3DmvNJwZXSgcxz",
   "6ou4YPcDJioR6J8jH6WpSgnDzUNUe9AkTX2wWZoxEXgn": "ZVKXpeZeP1PpxeTaiEjgwYNcGjMuXbBmTDcTnXzQHvNZJUTMMFTPTmEpj3iB1w9LkpEEtdvTyyNKUUWb8d68K4k",
   "7tdnfoEXjMChwxfYfP737Hy5XviWGpzcBpi7ZcuqPhR4": "CFb3tWdyFRS2Q8C6Ds8PMgC4mrCpxqaPVwx6LaiEEnuszNgTCCRUDLeYsZJcfwnED68BZv7zZASv8vuCR4sxEzn",
   "81eQ4UmJaqdQS5b4r4Xak6D9j3U4zF5d8suLTVDg14Sq": "4c2WfjKK4u3AzpdQKzPVa2nFjB8oc3fbCvZkpND8pNKxzenEhUKb1dC2awzK43TN5hCXhYoCZCHwqocZkqcYsACc",
@@ -7413,6 +7413,11 @@
    "wallet": "66B95ED19CLsJtsVYPkTBQT3EZPPpEawCimCPruVucSX",
    "mint": "8WoCxL7JvSkuE16vmT2QGdjnERRtG989yBW9h8uwpump",
    "ts": 1791772902
+  },
+  {
+   "wallet": "6hkd4VQ7ZeTXBBtwcktWD5kTBj9ahZspLcew5tpMPrH9",
+   "mint": "MYegNKvVmW6ezsu6C1L7g71mwrewZM2Si4yKgZGpump",
+   "ts": 1791774652
   }
  ],
  "alerts": [
@@ -7536,7 +7541,7 @@
  "credits": {
   "2026-10-10": 8523,
   "2026-10-11": 13167,
-  "2026-10-12": 556
+  "2026-10-12": 578
  },
  "ledger": {
   "5QY3MBvLEsP4xjE4SNYJYPuwvJgoBUrDnvSaZUNsNHZT": {
@@ -52092,9 +52097,17 @@
      "sold": 7467295.384581,
      "first": 1791747692,
      "last": 1791747862
+    },
+    "MYegNKvVmW6ezsu6C1L7g71mwrewZM2Si4yKgZGpump": {
+     "spent": 2.021540767,
+     "recv": 1.736987488,
+     "bought": 10347198.439343,
+     "sold": 10347198.439343,
+     "first": 1791774652,
+     "last": 1791774744
     }
    },
-   "synced": 1791747862,
+   "synced": 1791774744,
    "backfilled": 1791648175,
    "partial": false
   },
@@ -138723,7 +138736,9 @@
    "price": 4.427e-06,
    "mcap": 4427.88,
    "filtered": "micro-jeton",
-   "perf": {}
+   "perf": {
+    "1h": -8.244861079737964
+   }
   },
   {
    "mint": "E8Q5QYbcNvqagCSP1KBbsdemw49qAqKgqKdjhU44pump",
@@ -138733,7 +138748,9 @@
    "price": 4.427e-06,
    "mcap": 4427.88,
    "filtered": "micro-jeton",
-   "perf": {}
+   "perf": {
+    "1h": -8.244861079737964
+   }
   },
   {
    "mint": "3zsTcuV1Xmoz4mQDyeAChuWKhSvetpsoWbBgsdNLpump",
@@ -138743,7 +138760,9 @@
    "price": 8.221e-06,
    "mcap": 8221.82,
    "filtered": "micro-jeton",
-   "perf": {}
+   "perf": {
+    "1h": -57.13416859262863
+   }
   },
   {
    "mint": "8WoCxL7JvSkuE16vmT2QGdjnERRtG989yBW9h8uwpump",
@@ -138752,6 +138771,16 @@
    "level": 1,
    "price": 5.037e-06,
    "mcap": 5037.08,
+   "filtered": "micro-jeton",
+   "perf": {}
+  },
+  {
+   "mint": "MYegNKvVmW6ezsu6C1L7g71mwrewZM2Si4yKgZGpump",
+   "symbol": "PUMPKIN",
+   "ts": 1791774934,
+   "level": 1,
+   "price": 8.806e-06,
+   "mcap": 8806.21,
    "filtered": "micro-jeton",
    "perf": {}
   }

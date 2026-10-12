@@ -40083,7 +40083,8 @@
    }
   },
   "first_seen": "2026-10-11T04:01:13+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "3DPBt4dY6TU79LXXuX99dLNKurBgKcmjEtnHpcqUdmzm": {
   "hits": {

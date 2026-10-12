@@ -6657,7 +6657,8 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "CH5KzHxPgyWD8YXdabCbA8nuXAL427Tb1KdUL8Eygoym": {
   "hits": {
@@ -8018,7 +8019,8 @@
    "profitable": false,
    "at": "2026-10-11T04:01:13+00:00",
    "partial": false
-  }
+  },
+  "bot": true
  },
  "2uV1s6VUbb6itZnKSjo6nG4ac9KNAEGRaKfcPMpHd1an": {
   "hits": {
@@ -16509,7 +16511,8 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "DnPy15SMu9a8QkPPQmk8CcYkNqvZiRUrsj8WZbMKPetd": {
   "hits": {
@@ -16525,7 +16528,8 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "fQbffcEYd6KG2XNT7X7iE6us6g7spgBYVGo59qcxCrm": {
   "hits": {
@@ -43502,7 +43506,8 @@
    }
   },
   "first_seen": "2026-10-12T04:01:14+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "9C9geETmrVng92smUwR66Xk6c6eNYsqBYm3Sx72CkB3n": {
   "hits": {
@@ -48245,7 +48250,8 @@
    }
   },
   "first_seen": "2026-10-12T04:01:14+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "5ifowHNMMSFAKYsyoBvgypkW7PqryEkbP5XwQSfjKzhd": {
   "hits": {

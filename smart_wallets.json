@@ -9277,7 +9277,8 @@
    "profitable": false,
    "at": "2026-10-12T04:01:14+00:00",
    "partial": true
-  }
+  },
+  "bot": true
  },
  "FWXiNdTHSipYEG9FzbHiJyH6te1PtAcfdLCk6qFh5d5k": {
   "hits": {
@@ -35554,7 +35555,8 @@
    }
   },
   "first_seen": "2026-10-11T04:01:13+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "u4ce924VyE49hrmT8ivQEL37JRoYAsNsoFXD2edgtmA": {
   "hits": {

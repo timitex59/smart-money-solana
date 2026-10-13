@@ -50230,7 +50230,8 @@
    }
   },
   "first_seen": "2026-10-12T04:01:14+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "2c4Nd25BehQBNpug4E5DAVVSNmyYZxYBVUnjFMu19iMS": {
   "hits": {

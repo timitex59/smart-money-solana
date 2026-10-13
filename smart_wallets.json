@@ -50070,7 +50070,8 @@
    }
   },
   "first_seen": "2026-10-12T04:01:14+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "89bMM9Utsv9ZNgSQ727DJgHBj4C76ru7f2XS3VWW752B": {
   "hits": {

@@ -54443,7 +54443,8 @@
    "profitable": false,
    "at": "2026-10-13T04:01:14+00:00",
    "partial": true
-  }
+  },
+  "bot": true
  },
  "3KK1aoeiZCXqPZLt2AYeinrbz4n31DeTL58fkHFNzvYp": {
   "hits": {

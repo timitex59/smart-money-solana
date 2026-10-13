@@ -20855,7 +20855,8 @@
    "profitable": true,
    "at": "2026-10-13T04:01:14+00:00",
    "partial": true
-  }
+  },
+  "bot": true
  },
  "EGpYE7LJ31X41W5Yi6ocDiVLYYu4qbam8pbNWpJo6cLL": {
   "hits": {
@@ -20881,7 +20882,8 @@
    "profitable": false,
    "at": "2026-10-11T04:01:13+00:00",
    "partial": true
-  }
+  },
+  "bot": true
  },
  "31pktyQEJuqy8uLAPssUVzwdGu9xukpndspBNSq7R1vg": {
   "hits": {
@@ -20907,7 +20909,8 @@
    "profitable": true,
    "at": "2026-10-13T04:01:14+00:00",
    "partial": true
-  }
+  },
+  "bot": true
  },
  "66B95ED19CLsJtsVYPkTBQT3EZPPpEawCimCPruVucSX": {
   "hits": {

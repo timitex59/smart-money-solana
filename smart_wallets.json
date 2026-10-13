@@ -48181,7 +48181,8 @@
    }
   },
   "first_seen": "2026-10-12T04:01:14+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "CS8ouuP1SRCXkZaKBgFZfFvMR3B3rTXyQNKvWZBygn5S": {
   "hits": {

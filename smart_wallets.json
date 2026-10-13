@@ -9030,7 +9030,8 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "BNS52hL5m3gW8UU1zMH9som5WJ42sdQbh2kv7dzrm2FG": {
   "hits": {

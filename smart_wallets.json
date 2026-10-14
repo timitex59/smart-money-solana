@@ -13730,7 +13730,8 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "qHu1UchxzkKzCA4CRmENxTtqD62dGr1sxtdWxvDih4P": {
   "hits": {

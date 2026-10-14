@@ -22299,7 +22299,8 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "drM4uFtcrW6NmRMvD2SvT2JBPsm2VWEPR7tkcngmVWC": {
   "hits": {

@@ -24384,7 +24384,8 @@
    }
   },
   "first_seen": "2026-10-10T15:27:14+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "Fh5NyZFFsn5QoMStTK47sMK8ze9MGAyZPggEcmjkCtGG": {
   "hits": {
@@ -80526,7 +80527,8 @@
    }
   },
   "first_seen": "2026-10-14T04:01:13+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "CUxzeYwciAjnzUwSaQDTyTpj2Jt25eghwcobcxo9b9bV": {
   "hits": {

@@ -7551,7 +7551,8 @@
    }
   },
   "first_seen": "2026-10-10T14:34:29+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "ESEGGqQ5SmXA9dj7RZBHgShLYf8WPkfmjuZBTSUhHnG1": {
   "hits": {
@@ -36668,7 +36669,8 @@
    "profitable": false,
    "at": "2026-10-14T04:01:13+00:00",
    "partial": true
-  }
+  },
+  "bot": true
  },
  "3cmM1nzQvXCFANasqJenrGh6Q2tPgdQsoXVryLz2t8Mj": {
   "hits": {

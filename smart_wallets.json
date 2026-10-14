@@ -57030,7 +57030,8 @@
    }
   },
   "first_seen": "2026-10-12T04:01:14+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "3ty5ATkQXb3BLW9RSun7QSDzsgFZBezzbeGsnF3Q6ViT": {
   "hits": {

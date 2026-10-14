@@ -52877,7 +52877,8 @@
    }
   },
   "first_seen": "2026-10-12T04:01:14+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "ALEXXXvtdxQ81BVFbCEdYsmKZpe8ihfnryCoRgcRyRAX": {
   "hits": {
@@ -55138,7 +55139,8 @@
    }
   },
   "first_seen": "2026-10-12T04:01:14+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "CbC2fd96n4QZY4h6muJExn6FD8CyZMMErJV4Te5spYKP": {
   "hits": {

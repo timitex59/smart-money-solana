@@ -9727,7 +9727,8 @@
    "profitable": false,
    "at": "2026-10-15T04:01:15+00:00",
    "partial": true
-  }
+  },
+  "bot": true
  },
  "HxLhDPw1NndP4AGJvRCCusDhb3gqn3w7wwDbJBgHUZde": {
   "hits": {

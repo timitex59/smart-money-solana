@@ -82857,7 +82857,8 @@
    "profitable": false,
    "at": "2026-10-15T04:01:15+00:00",
    "partial": true
-  }
+  },
+  "bot": true
  },
  "GjBxFoZtPSg5jZNcxEf1WNi8ny8YNpkieCoSRdJqwg6w": {
   "hits": {

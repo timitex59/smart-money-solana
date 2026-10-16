@@ -85578,7 +85578,8 @@
    "profitable": false,
    "at": "2026-10-16T04:01:13+00:00",
    "partial": true
-  }
+  },
+  "bot": true
  },
  "AoxaNg8grHTKmqqagWAmgoZfm1P41oVnJhNGxacwVySb": {
   "hits": {

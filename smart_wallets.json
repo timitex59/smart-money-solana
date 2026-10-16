@@ -82416,7 +82416,8 @@
    "profitable": false,
    "at": "2026-10-15T04:01:15+00:00",
    "partial": true
-  }
+  },
+  "bot": true
  },
  "ARJXpbguMwd1NziwMyVz3dq6PgcFvYHgu6GWzbz4Ek5d": {
   "hits": {

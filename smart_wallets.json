@@ -54060,7 +54060,8 @@
    "profitable": false,
    "at": "2026-10-16T04:01:13+00:00",
    "partial": true
-  }
+  },
+  "bot": true
  },
  "3h65MmPZksoKKyEpEjnWU2Yk2iYT5oZDNitGy5cTaxoE": {
   "hits": {
@@ -120794,7 +120795,8 @@
    }
   },
   "first_seen": "2026-10-15T04:01:15+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "D7Tu57MMQhH47Y41c9125Jm33RExaLJXes3dXu74wGPd": {
   "hits": {

@@ -79331,7 +79331,8 @@
    "profitable": false,
    "at": "2026-10-16T04:01:13+00:00",
    "partial": true
-  }
+  },
+  "bot": true
  },
  "FbCS3ZVxXWAhDUHqjjffxLJJ7Nh8RisZ57Ki2F5LyHbD": {
   "hits": {

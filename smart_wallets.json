@@ -52234,7 +52234,8 @@
    }
   },
   "first_seen": "2026-10-12T04:01:14+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "24wLq3dYiLJaBBtM3kfT3ZcjNE7ZPEgTfzAviGqEh8Y1": {
   "hits": {

@@ -81460,7 +81460,8 @@
    }
   },
   "first_seen": "2026-10-13T04:01:14+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "5NhcueyzGCwLeMqcusrxP8xJ5RbcEGhk1nwAv57aFEmd": {
   "hits": {

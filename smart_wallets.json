@@ -50568,7 +50568,8 @@
    "profitable": false,
    "at": "2026-10-16T04:01:13+00:00",
    "partial": true
-  }
+  },
+  "bot": true
  },
  "8BVVLRR6sKtBFqUqc62rEyoxTg4Q76BWrYjEjEMkWqbf": {
   "hits": {

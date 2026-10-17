@@ -121904,7 +121904,8 @@
    "profitable": false,
    "at": "2026-10-17T04:01:13+00:00",
    "partial": true
-  }
+  },
+  "bot": true
  },
  "7QTbkerh8taqHT6KGnTLxXA2L5PNnwaQgimxLQj6Gg82": {
   "hits": {

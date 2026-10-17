@@ -59973,7 +59973,8 @@
    "profitable": false,
    "at": "2026-10-17T04:01:13+00:00",
    "partial": true
-  }
+  },
+  "bot": true
  },
  "BG6BS3Vz7KDg1rhF1QDpM1ZaFeZDhQm5BKMTSH3SD3zZ": {
   "hits": {

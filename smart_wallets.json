@@ -128933,7 +128933,8 @@
    "profitable": true,
    "at": "2026-10-17T04:01:13+00:00",
    "partial": true
-  }
+  },
+  "bot": true
  },
  "D77H5AEp6tTmJTqv6t6qrYJBuvg5NX47CvCnowtnRfKm": {
   "hits": {

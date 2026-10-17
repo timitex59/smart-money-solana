@@ -55163,7 +55163,8 @@
    "profitable": false,
    "at": "2026-10-17T04:01:13+00:00",
    "partial": true
-  }
+  },
+  "bot": true
  },
  "FT9AgC7PG29RVxp2KRiMYkP8tMCP62ed4S89B5e9d5jC": {
   "hits": {

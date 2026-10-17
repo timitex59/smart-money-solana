@@ -80048,7 +80048,8 @@
    }
   },
   "first_seen": "2026-10-13T04:01:14+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "6KCrbzQ7xZcoQaueP8NstPQbFGm4yeiB3i6jF45X6Do4": {
   "hits": {

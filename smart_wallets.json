@@ -70543,7 +70543,8 @@
    }
   },
   "first_seen": "2026-10-13T04:01:14+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "8xGUN6SVLwbYhV3obDLZvPC5WY1wjG9ptKnjD9YeEdgD": {
   "hits": {

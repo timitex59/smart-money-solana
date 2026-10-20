@@ -99162,7 +99162,8 @@
    "profitable": false,
    "at": "2026-10-17T04:01:13+00:00",
    "partial": true
-  }
+  },
+  "bot": true
  },
  "r9n6jSLS7Go7y3pMjy5DvUZCQ3fUTg2mrbJfCLNPmnQ": {
   "hits": {

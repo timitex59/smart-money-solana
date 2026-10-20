@@ -125697,7 +125697,8 @@
    }
   },
   "first_seen": "2026-10-16T04:01:13+00:00",
-  "personal": true
+  "personal": true,
+  "bot": true
  },
  "C6tDzu4Nx3HJ19EJ8VqK8wtReRVRS3jceX7JcrSaELc6": {
   "hits": {
